@@ -112,7 +112,7 @@ body{ text-align:center; background:#fff; *position:relative; }
 	.header-wrap .left-box .nav a{ display:inline-block; margin:10px 0; padding:0 8px; line-height:35px; height:35px;  color:#fff; opacity:0.9; }
 	.header-wrap .left-box .nav a:hover{ border-radius:3px; color:#fff; background:#104C99; }
 	.header-wrap .search{ position:relative; display:block; float:left; margin:13px 0 0 20px; }
-	.header-wrap .search .input{ display:block; margin:0; padding:3px 30px 3px 10px; width:150px; height:20px; line-height:20px; color:#fff; border:1px solid #76b5dc; border-radius:2px; background:none; }
+	.header-wrap .search .input{ display:block; margin:0; padding:3px 30px 3px 10px; width:250px; height:20px; line-height:20px; color:#fff; border:1px solid #76b5dc; border-radius:2px; background:none; }
 	.header-wrap .search .submit{ position:absolute; top:0; right:0; display:block; width:30px; height:28px; line-height:30px; text-indent:-9999px; color:#fff; border:none; background:url(../images/search.png) no-repeat center; cursor:pointer; _text-indent:0; overflow:hidden; }
 	.header-wrap .right-box{ float:right; display:block; margin:13px 0; height:28px; }
 	.header-wrap .right-box li{ float:left; margin-left:15px; }

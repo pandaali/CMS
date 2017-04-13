@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2015/5/15 1:37:44.
-		本页面代码由DTcms模板引擎生成于 2015/5/15 1:37:44. 
+		This page was created by DTcms Template Engine at 2017/4/13 16:44:29.
+		本页面代码由DTcms模板引擎生成于 2017/4/13 16:44:29. 
 	*/
 
 	base.OnInit(e);
@@ -45,19 +45,13 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("</a>\r\n        <p class=\"nav\">\r\n          <a href=\"");
 	templateBuilder.Append(linkurl("news"));
 
-	templateBuilder.Append("\">资讯</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("goods"));
+	templateBuilder.Append("\">互联网这点事</a>\r\n          <a href=\"");
+	templateBuilder.Append(linkurl("windows"));
 
-	templateBuilder.Append("\">商城</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("video"));
+	templateBuilder.Append("\">Win软件</a>\r\n          <a href=\"");
+	templateBuilder.Append(linkurl("mac"));
 
-	templateBuilder.Append("\">视频</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("photo"));
-
-	templateBuilder.Append("\">图片</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("down"));
-
-	templateBuilder.Append("\">下载</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
+	templateBuilder.Append("\">Mac软件</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
 	templateBuilder.Append(linkurl("search"));
 
 	templateBuilder.Append("', '#keywords');return false};\" placeholder=\"输入回车搜索\" x-webkit-speech=\"\" />\r\n        <input class=\"submit\" type=\"submit\" onclick=\"SiteSearch('");
@@ -78,13 +72,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("login"));
 
 	templateBuilder.Append("\">登录</a></li>');\r\n					}\r\n				}\r\n			});\r\n		</");
-	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li>\r\n            <a href=\"");
-	templateBuilder.Append(linkurl("cart"));
-
-	templateBuilder.Append("\">购物车<span id=\"shoppingCartCount\"><script type=\"text/javascript\" src=\"");
-	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
-	templateBuilder.Append("tools/submit_ajax.ashx?action=view_cart_count\"></");
-	templateBuilder.Append("script></span>件</a>\r\n          </li>\r\n          <li><a href=\"");
+	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li><a href=\"");
 	templateBuilder.Append(linkurl("content","contact"));
 
 	templateBuilder.Append("\">联系我们</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>");
@@ -247,39 +235,29 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("index"));
 
 	templateBuilder.Append("\">首 页</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("content","about"));
-
-	templateBuilder.Append("\">关于我们</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("news"));
 
-	templateBuilder.Append("\">新闻资讯</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("goods"));
+	templateBuilder.Append("\">互联网那些事</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append(linkurl("windows"));
 
-	templateBuilder.Append("\">购物商城</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("video"));
+	templateBuilder.Append("\">Win软件</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append(linkurl("mac"));
 
-	templateBuilder.Append("\">视频专区</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("down"));
-
-	templateBuilder.Append("\">资源下载</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("photo"));
-
-	templateBuilder.Append("\">图片分享</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append("\">Mac软件</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("feedback"));
 
 	templateBuilder.Append("\">留言反馈</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("link"));
 
-	templateBuilder.Append("\">友情链接</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("content","contact"));
-
-	templateBuilder.Append("\">联系我们</a>\r\n  </div>\r\n  <div class=\"copyright\">\r\n    <p>版权所有 ");
+	templateBuilder.Append("\">友情链接</a>|\r\n      <a target=\"_blank\" href=\"");
+	templateBuilder.Append("<%linkurl(\" content\",\"about\")%>");
+	templateBuilder.Append("\">关于我们</a>|\r\n  </div>\r\n  <div class=\"copyright\">\r\n    <p>版权所有 ");
 	templateBuilder.Append(site.company.ToString());
 
-	templateBuilder.Append(" 粤ICP备11064298号 DTcms版本号：");
+	templateBuilder.Append("  版本号：");
 	templateBuilder.Append(Utils.GetVersion().ToString());
 
-	templateBuilder.Append(" 旗舰版</p>\r\n    <p>Copyright &copy; 2009-2015 dtcms.net Corporation,All Rights Reserved.</p>\r\n    <p><script src=\"http://s24.cnzz.com/stat.php?id=1996164&web_id=1996164&show=pic\" language=\"javascript\"></");
+	templateBuilder.Append("</p>\r\n    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>\r\n    <p><script src=\"https://s11.cnzz.com/z_stat.php?id=1261718968&web_id=1261718968\" language=\"JavaScript\"></");
 	templateBuilder.Append("script></p>\r\n  </div>\r\n</div>");
 
 

@@ -24,6 +24,11 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -427,6 +432,7 @@
     <Content Include="images\oauth\renren.png" />
     <Content Include="images\oauth\taobao.png" />
     <Content Include="images\oauth\weibo.png" />
+    <Content Include="index_bak.aspx" />
     <Content Include="index.aspx" />
     <Content Include="scripts\artdialog\dialog-min.js" />
     <Content Include="scripts\artdialog\dialog-plus-min.js" />
@@ -479,6 +485,7 @@
     <Content Include="templates\main\css\flexslider.css" />
     <Content Include="templates\main\css\lightbox.css" />
     <Content Include="templates\main\css\style.css" />
+    <Content Include="templates\main\index_bak.html" />
     <Content Include="templates\main\down.html" />
     <Content Include="templates\main\down_list.html" />
     <Content Include="templates\main\down_show.html" />
@@ -505,6 +512,7 @@
     <Content Include="templates\main\images\user-avatar.png" />
     <Content Include="templates\main\images\user.png" />
     <Content Include="templates\main\index.html" />
+    <Content Include="templates\main\index20170413.html" />
     <Content Include="templates\main\js\avatar.js" />
     <Content Include="templates\main\js\cart.js" />
     <Content Include="templates\main\js\common.js" />
@@ -514,6 +522,9 @@
     <Content Include="templates\main\js\picture.js" />
     <Content Include="templates\main\js\register-validate.js" />
     <Content Include="templates\main\login.html" />
+    <Content Include="templates\main\mac.html" />
+    <Content Include="templates\main\mac_list.html" />
+    <Content Include="templates\main\mac_show.html" />
     <Content Include="templates\main\news.html" />
     <Content Include="templates\main\news_list.html" />
     <Content Include="templates\main\news_show.html" />
@@ -536,6 +547,9 @@
     <Content Include="templates\main\video.html" />
     <Content Include="templates\main\video_list.html" />
     <Content Include="templates\main\video_show.html" />
+    <Content Include="templates\main\windows.html" />
+    <Content Include="templates\main\windows_list.html" />
+    <Content Include="templates\main\windows_show.html" />
     <Content Include="templates\main\_comment_box.html" />
     <Content Include="templates\main\_footer.html" />
     <Content Include="templates\main\_header.html" />
@@ -1139,7 +1153,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="xmlconfig\site.config" />
-    <Content Include="xmlconfig\urls.config" />
+    <Content Include="xmlconfig\urls.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="html\" />

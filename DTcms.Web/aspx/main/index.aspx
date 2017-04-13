@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2015/5/15 1:37:44.
-		本页面代码由DTcms模板引擎生成于 2015/5/15 1:37:44. 
+		This page was created by DTcms Template Engine at 2017/4/13 16:44:29.
+		本页面代码由DTcms模板引擎生成于 2017/4/13 16:44:29. 
 	*/
 
 	base.OnInit(e);
@@ -44,19 +44,13 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("</a>\r\n        <p class=\"nav\">\r\n          <a href=\"");
 	templateBuilder.Append(linkurl("news"));
 
-	templateBuilder.Append("\">资讯</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("goods"));
+	templateBuilder.Append("\">互联网这点事</a>\r\n          <a href=\"");
+	templateBuilder.Append(linkurl("windows"));
 
-	templateBuilder.Append("\">商城</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("video"));
+	templateBuilder.Append("\">Win软件</a>\r\n          <a href=\"");
+	templateBuilder.Append(linkurl("mac"));
 
-	templateBuilder.Append("\">视频</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("photo"));
-
-	templateBuilder.Append("\">图片</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("down"));
-
-	templateBuilder.Append("\">下载</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
+	templateBuilder.Append("\">Mac软件</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
 	templateBuilder.Append(linkurl("search"));
 
 	templateBuilder.Append("', '#keywords');return false};\" placeholder=\"输入回车搜索\" x-webkit-speech=\"\" />\r\n        <input class=\"submit\" type=\"submit\" onclick=\"SiteSearch('");
@@ -77,13 +71,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("login"));
 
 	templateBuilder.Append("\">登录</a></li>');\r\n					}\r\n				}\r\n			});\r\n		</");
-	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li>\r\n            <a href=\"");
-	templateBuilder.Append(linkurl("cart"));
-
-	templateBuilder.Append("\">购物车<span id=\"shoppingCartCount\"><script type=\"text/javascript\" src=\"");
-	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
-	templateBuilder.Append("tools/submit_ajax.ashx?action=view_cart_count\"></");
-	templateBuilder.Append("script></span>件</a>\r\n          </li>\r\n          <li><a href=\"");
+	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li><a href=\"");
 	templateBuilder.Append(linkurl("content","contact"));
 
 	templateBuilder.Append("\">联系我们</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>");
@@ -181,172 +169,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("</i>\r\n              <p>" + Utils.ObjectToStr(dr["zhaiyao"]) + "</p>\r\n            </span>\r\n            <img src=\"" + Utils.ObjectToStr(dr["img_url"]) + "\" />\r\n          </a>\r\n        </li>\r\n        ");
 	}	//end for if
 
-	templateBuilder.Append("\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
-	templateBuilder.Append(linkurl("goods"));
-
-	templateBuilder.Append("\">购物商城<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <!--类别-->\r\n      ");
-	DataTable goodsCList = get_category_child_list("goods",0);
-
-	int gcdr__loop__id=0;
-	foreach(DataRow gcdr in goodsCList.Rows)
-	{
-		gcdr__loop__id++;
-
-
-	if (gcdr__loop__id==1)
-	{
-
-	templateBuilder.Append("\r\n      <a class=\"no-bg\" href=\"");
-	templateBuilder.Append(linkurl("goods_list",Utils.ObjectToStr(gcdr["id"])));
-
-	templateBuilder.Append("\">" + Utils.ObjectToStr(gcdr["title"]) + "</a>\r\n      ");
-	}
-	else
-	{
-
-	templateBuilder.Append("\r\n      <a href=\"");
-	templateBuilder.Append(linkurl("goods_list",Utils.ObjectToStr(gcdr["id"])));
-
-	templateBuilder.Append("\">" + Utils.ObjectToStr(gcdr["title"]) + "</a>\r\n      ");
-	}	//end for if
-
-	}	//end for if
-
-	templateBuilder.Append("\r\n      <!--/类别-->\r\n    </p>\r\n  </div>\r\n  <div class=\"wrapper clearfix\">\r\n    <div class=\"main-left ilist\">\r\n      ");
-	DataTable focusGoods = get_article_list("goods", 0, 1, "status=0 and is_slide=1");
-
-	foreach(DataRow dr in focusGoods.Rows)
-	{
-
-	templateBuilder.Append("\r\n      <a title=\"" + Utils.ObjectToStr(dr["title"]) + "\" href=\"");
-	templateBuilder.Append(linkurl("goods_show",Utils.ObjectToStr(dr["id"])));
-
-	templateBuilder.Append("\">\r\n        <span class=\"abs-bg\"></span>\r\n        <span class=\"txt1\">" + Utils.ObjectToStr(dr["title"]) + "</span>\r\n        <span class=\"txt2\">\r\n          <p>" + Utils.ObjectToStr(dr["sub_title"]) + "</p>\r\n        </span>\r\n        <img src=\"" + Utils.ObjectToStr(dr["img_url"]) + "\" />\r\n      </a>\r\n      ");
-	}	//end for if
-
-	templateBuilder.Append("\r\n    </div>\r\n    <div class=\"main-right\">\r\n      <ul class=\"img-list ilist\">\r\n        ");
-	DataTable redGoods = get_article_list("goods", 0, 6, "status=0 and is_red=1");
-
-	foreach(DataRow dr in redGoods.Rows)
-	{
-
-	templateBuilder.Append("\r\n        <li>\r\n          <a title=\"" + Utils.ObjectToStr(dr["title"]) + "\" href=\"");
-	templateBuilder.Append(linkurl("goods_show",Utils.ObjectToStr(dr["id"])));
-
-	templateBuilder.Append("\">\r\n            ");
-	if (Utils.ObjectToStr(dr["is_top"])=="1")
-	{
-
-	templateBuilder.Append("\r\n            <span class=\"abs-txt\">特价</span>\r\n            ");
-	}	//end for if
-
-	templateBuilder.Append("\r\n            <span class=\"abs-bg\"></span>\r\n            <span class=\"price\">\r\n              <i>¥" + Utils.ObjectToStr(dr["market_price"]) + "</i>\r\n              <b>¥</b>" + Utils.ObjectToStr(dr["sell_price"]) + "\r\n            </span>\r\n            <span class=\"protxt\">" + Utils.ObjectToStr(dr["title"]) + "</span>\r\n            <img src=\"" + Utils.ObjectToStr(dr["img_url"]) + "\" />\r\n          </a>\r\n        </li>\r\n        ");
-	}	//end for if
-
-	templateBuilder.Append("\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
-	templateBuilder.Append(linkurl("video"));
-
-	templateBuilder.Append("\">视频专区<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <!--类别-->\r\n      ");
-	DataTable videoCList = get_category_child_list("video",0);
-
-	int vcdr__loop__id=0;
-	foreach(DataRow vcdr in videoCList.Rows)
-	{
-		vcdr__loop__id++;
-
-
-	if (vcdr__loop__id==1)
-	{
-
-	templateBuilder.Append("\r\n      <a class=\"no-bg\" href=\"");
-	templateBuilder.Append(linkurl("video_list",Utils.ObjectToStr(vcdr["id"])));
-
-	templateBuilder.Append("\">" + Utils.ObjectToStr(vcdr["title"]) + "</a>\r\n      ");
-	}
-	else
-	{
-
-	templateBuilder.Append("\r\n      <a href=\"");
-	templateBuilder.Append(linkurl("video_list",Utils.ObjectToStr(vcdr["id"])));
-
-	templateBuilder.Append("\">" + Utils.ObjectToStr(vcdr["title"]) + "</a>\r\n      ");
-	}	//end for if
-
-	}	//end for if
-
-	templateBuilder.Append("\r\n      <!--/类别-->\r\n    </p>\r\n  </div>\r\n  <div class=\"wrapper clearfix\">\r\n    <div class=\"main-left ilist\">\r\n      ");
-	DataTable focusVideo = get_article_list("video", 0, 1, "status=0 and is_slide=1");
-
-	foreach(DataRow dr in focusVideo.Rows)
-	{
-
-	templateBuilder.Append("\r\n      <a title=\"" + Utils.ObjectToStr(dr["title"]) + "\" href=\"");
-	templateBuilder.Append(linkurl("video_show",Utils.ObjectToStr(dr["id"])));
-
-	templateBuilder.Append("\">\r\n        <em></em>\r\n        <span class=\"abs-bg\"></span>\r\n        <span class=\"txt1\">" + Utils.ObjectToStr(dr["title"]) + "</span>\r\n        <span class=\"txt2\">\r\n          <p>" + Utils.ObjectToStr(dr["sub_title"]) + "</p>\r\n        </span>\r\n        <img src=\"" + Utils.ObjectToStr(dr["img_url"]) + "\" />\r\n      </a>\r\n      ");
-	}	//end for if
-
-	templateBuilder.Append("\r\n    </div>\r\n    <div class=\"main-right\">\r\n      <ul class=\"img-list ilist\">\r\n        ");
-	DataTable redVideo = get_article_list("video", 0, 6, "status=0 and is_red=1");
-
-	foreach(DataRow dr in redVideo.Rows)
-	{
-
-	templateBuilder.Append("\r\n        <li>\r\n          <a title=\"" + Utils.ObjectToStr(dr["title"]) + "\" href=\"");
-	templateBuilder.Append(linkurl("video_show",Utils.ObjectToStr(dr["id"])));
-
-	templateBuilder.Append("\">\r\n            <em></em>\r\n            <span class=\"abs-bg\"></span>\r\n            <span class=\"txt1\">" + Utils.ObjectToStr(dr["title"]) + "</span>\r\n            <span class=\"txt2\">\r\n              <p>" + Utils.ObjectToStr(dr["sub_title"]) + "</p>\r\n            </span>\r\n            <img src=\"" + Utils.ObjectToStr(dr["img_url"]) + "\" />\r\n          </a>\r\n        </li>\r\n        ");
-	}	//end for if
-
-	templateBuilder.Append("\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
-	templateBuilder.Append(linkurl("photo"));
-
-	templateBuilder.Append("\">图片分享<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <!--类别-->\r\n      ");
-	DataTable photoCList = get_category_child_list("photo",0);
-
-	int pcdr__loop__id=0;
-	foreach(DataRow pcdr in photoCList.Rows)
-	{
-		pcdr__loop__id++;
-
-
-	if (pcdr__loop__id==1)
-	{
-
-	templateBuilder.Append("\r\n      <a class=\"no-bg\" href=\"");
-	templateBuilder.Append(linkurl("photo_list",Utils.ObjectToStr(pcdr["id"])));
-
-	templateBuilder.Append("\">" + Utils.ObjectToStr(pcdr["title"]) + "</a>\r\n      ");
-	}
-	else
-	{
-
-	templateBuilder.Append("\r\n      <a href=\"");
-	templateBuilder.Append(linkurl("photo_list",Utils.ObjectToStr(pcdr["id"])));
-
-	templateBuilder.Append("\">" + Utils.ObjectToStr(pcdr["title"]) + "</a>\r\n      ");
-	}	//end for if
-
-	}	//end for if
-
-	templateBuilder.Append("\r\n      <!--/类别-->\r\n    </p>\r\n  </div>\r\n  <div class=\"wrapper clearfix\">\r\n    <div class=\"photo-list ilist\">\r\n      <ul>\r\n        ");
-	DataTable redPhoto = get_article_list("photo", 0, 6, "status=0 and is_red=1");
-
-	int photodr__loop__id=0;
-	foreach(DataRow photodr in redPhoto.Rows)
-	{
-		photodr__loop__id++;
-
-
-	templateBuilder.Append("\r\n        <li class=\"col-");
-	templateBuilder.Append(Utils.ObjectToStr(photodr__loop__id));
-	templateBuilder.Append("\">\r\n          <a title=\"" + Utils.ObjectToStr(photodr["title"]) + "\" href=\"");
-	templateBuilder.Append(linkurl("photo_show",Utils.ObjectToStr(photodr["id"])));
-
-	templateBuilder.Append("\">\r\n            <span class=\"abs-bg\"></span>\r\n            <span class=\"txt1\">" + Utils.ObjectToStr(photodr["title"]) + "</span>\r\n            <span class=\"txt2\">\r\n              <p>" + Utils.ObjectToStr(photodr["add_time"]) + "</p>\r\n            </span>\r\n            <img src=\"" + Utils.ObjectToStr(photodr["img_url"]) + "\" />\r\n          </a>\r\n        </li>\r\n        ");
-	}	//end for if
-
-	templateBuilder.Append("\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
+	templateBuilder.Append("\r\n      </ul>\r\n    </div>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
 	templateBuilder.Append(linkurl("down"));
 
 	templateBuilder.Append("\">资源下载<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <!--类别-->\r\n      ");
@@ -394,7 +217,103 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("</p>\r\n            </span>\r\n          </div>\r\n        </a>\r\n      </li>\r\n      ");
 	}	//end for if
 
-	templateBuilder.Append("\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n<div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
+	templateBuilder.Append("\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n    <!--Win软件-->\r\n    <div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
+	templateBuilder.Append(linkurl("windows"));
+
+	templateBuilder.Append("\">Win软件<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <!--类别-->\r\n      ");
+	DataTable windowsCList = get_category_child_list("windows",0);
+
+	int dcdrwindows__loop__id=0;
+	foreach(DataRow dcdrwindows in windowsCList.Rows)
+	{
+		dcdrwindows__loop__id++;
+
+
+	if (dcdrwindows__loop__id==1)
+	{
+
+	templateBuilder.Append("\r\n      <a class=\"no-bg\" href=\"");
+	templateBuilder.Append(linkurl("windows_list",Utils.ObjectToStr(dcdrwindows["id"])));
+
+	templateBuilder.Append("\">" + Utils.ObjectToStr(dcdrwindows["title"]) + "</a>\r\n      ");
+	}
+	else
+	{
+
+	templateBuilder.Append("\r\n      <a href=\"");
+	templateBuilder.Append(linkurl("windows_list",Utils.ObjectToStr(dcdrwindows["id"])));
+
+	templateBuilder.Append("\">" + Utils.ObjectToStr(dcdrwindows["title"]) + "</a>\r\n      ");
+	}	//end for if
+
+	}	//end for if
+
+	templateBuilder.Append("\r\n      <!--/类别-->\r\n    </p>\r\n  </div>\r\n  <div class=\"wrapper clearfix\">\r\n    <ul class=\"img-list high ilist\">\r\n      ");
+	DataTable redWindows = get_article_list("windows", 0, 5, "status=0 and is_red=1");
+
+	foreach(DataRow dr in redWindows.Rows)
+	{
+
+	templateBuilder.Append("\r\n      <li>\r\n        <a title=\"" + Utils.ObjectToStr(dr["title"]) + "\" href=\"");
+	templateBuilder.Append(linkurl("windows_show",Utils.ObjectToStr(dr["id"])));
+
+	templateBuilder.Append("\">\r\n          <div class=\"img-box\">\r\n            <img src=\"" + Utils.ObjectToStr(dr["img_url"]) + "\" />\r\n          </div>\r\n          <div class=\"info\">\r\n            <h3>" + Utils.ObjectToStr(dr["title"]) + "</h3>\r\n            <span>\r\n              <i>下载：<script type=\"text/javascript\" src=\"");
+	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
+	templateBuilder.Append("tools/submit_ajax.ashx?action=view_attach_count&id=" + Utils.ObjectToStr(dr["id"]) + "&view=count\"></");
+	templateBuilder.Append("script>次</i>\r\n              <p>");	templateBuilder.Append(Utils.ObjectToDateTime(Utils.ObjectToStr(dr["add_time"])).ToString("yyyy-MM-dd"));
+
+	templateBuilder.Append("</p>\r\n            </span>\r\n          </div>\r\n        </a>\r\n      </li>\r\n      ");
+	}	//end for if
+
+	templateBuilder.Append("\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n    <!--Mac软件-->\r\n    <div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
+	templateBuilder.Append(linkurl("mac"));
+
+	templateBuilder.Append("\">Mac软件<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <!--类别-->\r\n      ");
+	DataTable macCList = get_category_child_list("mac",0);
+
+	int dcdrmac__loop__id=0;
+	foreach(DataRow dcdrmac in macCList.Rows)
+	{
+		dcdrmac__loop__id++;
+
+
+	if (dcdrmac__loop__id==1)
+	{
+
+	templateBuilder.Append("\r\n      <a class=\"no-bg\" href=\"");
+	templateBuilder.Append(linkurl("mac_list",Utils.ObjectToStr(dcdrmac["id"])));
+
+	templateBuilder.Append("\">" + Utils.ObjectToStr(dcdrmac["title"]) + "</a>\r\n      ");
+	}
+	else
+	{
+
+	templateBuilder.Append("\r\n      <a href=\"");
+	templateBuilder.Append(linkurl("mac_list",Utils.ObjectToStr(dcdrmac["id"])));
+
+	templateBuilder.Append("\">" + Utils.ObjectToStr(dcdrmac["title"]) + "</a>\r\n      ");
+	}	//end for if
+
+	}	//end for if
+
+	templateBuilder.Append("\r\n      <!--/类别-->\r\n    </p>\r\n  </div>\r\n  <div class=\"wrapper clearfix\">\r\n    <ul class=\"img-list high ilist\">\r\n      ");
+	DataTable redMac = get_article_list("mac", 0, 5, "status=0 and is_red=1");
+
+	foreach(DataRow dr in redMac.Rows)
+	{
+
+	templateBuilder.Append("\r\n      <li>\r\n        <a title=\"" + Utils.ObjectToStr(dr["title"]) + "\" href=\"");
+	templateBuilder.Append(linkurl("mac_show",Utils.ObjectToStr(dr["id"])));
+
+	templateBuilder.Append("\">\r\n          <div class=\"img-box\">\r\n            <img src=\"" + Utils.ObjectToStr(dr["img_url"]) + "\" />\r\n          </div>\r\n          <div class=\"info\">\r\n            <h3>" + Utils.ObjectToStr(dr["title"]) + "</h3>\r\n            <span>\r\n              <i>下载：<script type=\"text/javascript\" src=\"");
+	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
+	templateBuilder.Append("tools/submit_ajax.ashx?action=view_attach_count&id=" + Utils.ObjectToStr(dr["id"]) + "&view=count\"></");
+	templateBuilder.Append("script>次</i>\r\n              <p>");	templateBuilder.Append(Utils.ObjectToDateTime(Utils.ObjectToStr(dr["add_time"])).ToString("yyyy-MM-dd"));
+
+	templateBuilder.Append("</p>\r\n            </span>\r\n          </div>\r\n        </a>\r\n      </li>\r\n      ");
+	}	//end for if
+
+	templateBuilder.Append("\r\n    </ul>\r\n  </div>\r\n</div>\r\n\r\n\r\n<div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
 	templateBuilder.Append(linkurl("link"));
 
 	templateBuilder.Append("\">友情链接<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <a class=\"no-bg\" href=\"");
@@ -424,39 +343,29 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("index"));
 
 	templateBuilder.Append("\">首 页</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("content","about"));
-
-	templateBuilder.Append("\">关于我们</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("news"));
 
-	templateBuilder.Append("\">新闻资讯</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("goods"));
+	templateBuilder.Append("\">互联网那些事</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append(linkurl("windows"));
 
-	templateBuilder.Append("\">购物商城</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("video"));
+	templateBuilder.Append("\">Win软件</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append(linkurl("mac"));
 
-	templateBuilder.Append("\">视频专区</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("down"));
-
-	templateBuilder.Append("\">资源下载</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("photo"));
-
-	templateBuilder.Append("\">图片分享</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append("\">Mac软件</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("feedback"));
 
 	templateBuilder.Append("\">留言反馈</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("link"));
 
-	templateBuilder.Append("\">友情链接</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("content","contact"));
-
-	templateBuilder.Append("\">联系我们</a>\r\n  </div>\r\n  <div class=\"copyright\">\r\n    <p>版权所有 ");
+	templateBuilder.Append("\">友情链接</a>|\r\n      <a target=\"_blank\" href=\"");
+	templateBuilder.Append("<%linkurl(\" content\",\"about\")%>");
+	templateBuilder.Append("\">关于我们</a>|\r\n  </div>\r\n  <div class=\"copyright\">\r\n    <p>版权所有 ");
 	templateBuilder.Append(site.company.ToString());
 
-	templateBuilder.Append(" 粤ICP备11064298号 DTcms版本号：");
+	templateBuilder.Append("  版本号：");
 	templateBuilder.Append(Utils.GetVersion().ToString());
 
-	templateBuilder.Append(" 旗舰版</p>\r\n    <p>Copyright &copy; 2009-2015 dtcms.net Corporation,All Rights Reserved.</p>\r\n    <p><script src=\"http://s24.cnzz.com/stat.php?id=1996164&web_id=1996164&show=pic\" language=\"javascript\"></");
+	templateBuilder.Append("</p>\r\n    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>\r\n    <p><script src=\"https://s11.cnzz.com/z_stat.php?id=1261718968&web_id=1261718968\" language=\"JavaScript\"></");
 	templateBuilder.Append("script></p>\r\n  </div>\r\n</div>");
 
 
