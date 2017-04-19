@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F75319DF-ACF3-40F5-832F-87C9FDA346E8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Pandaali.CMS.API</RootNamespace>
+    <AssemblyName>Pandaali.CMS.API</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Senparc.Weixin.MP">
+      <HintPath>..\DTcms.Web\bin\Senparc.Weixin.MP.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="OAuth\feixin_helper.cs" />
+    <Compile Include="OAuth\kaixin_helper.cs" />
+    <Compile Include="OAuth\oauth_config.cs" />
+    <Compile Include="OAuth\oauth_helper.cs" />
+    <Compile Include="OAuth\qq_helper.cs" />
+    <Compile Include="OAuth\renren_helper.cs" />
+    <Compile Include="OAuth\sina_helper.cs" />
+    <Compile Include="OAuth\taobao_helper.cs" />
+    <Compile Include="Payment\alipaypc\AlipayConfig.cs" />
+    <Compile Include="Payment\alipaypc\AlipayCore.cs" />
+    <Compile Include="Payment\alipaypc\AlipayNotify.cs" />
+    <Compile Include="Payment\alipaypc\AlipayService.cs" />
+    <Compile Include="Payment\alipaypc\AlipaySubmit.cs" />
+    <Compile Include="Payment\tenpaypc\ClientResponseHandler.cs" />
+    <Compile Include="Payment\tenpaypc\MD5Util.cs" />
+    <Compile Include="Payment\tenpaypc\RequestHandler.cs" />
+    <Compile Include="Payment\tenpaypc\ResponseHandler.cs" />
+    <Compile Include="Payment\tenpaypc\TenpayHttpClient.cs" />
+    <Compile Include="Payment\tenpaypc\TenpayUtil.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Pandaali.CMS.BLL\Pandaali.CMS.BLL.csproj">
+      <Project>{ad6336af-c8bc-4bd8-9222-813752f7c363}</Project>
+      <Name>Pandaali.CMS.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pandaali.CMS.Common\Pandaali.CMS.Common.csproj">
+      <Project>{aadbc7ca-a27c-4b05-b8b5-19e3d339e876}</Project>
+      <Name>Pandaali.CMS.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Pandaali.CMS.Model\Pandaali.CMS.Model.csproj">
+      <Project>{b2357236-bfe6-4466-b5c2-4b9423e71f8b}</Project>
+      <Name>Pandaali.CMS.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
