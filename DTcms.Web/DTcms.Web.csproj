@@ -192,6 +192,9 @@
     <Content Include="aspx\main\goods_show.aspx" />
     <Content Include="aspx\main\index.aspx" />
     <Content Include="aspx\main\login.aspx" />
+    <Content Include="aspx\main\mac.aspx" />
+    <Content Include="aspx\main\mac_list.aspx" />
+    <Content Include="aspx\main\mac_show.aspx" />
     <Content Include="aspx\main\news.aspx" />
     <Content Include="aspx\main\news_list.aspx" />
     <Content Include="aspx\main\news_show.aspx" />
@@ -214,6 +217,9 @@
     <Content Include="aspx\main\video.aspx" />
     <Content Include="aspx\main\video_list.aspx" />
     <Content Include="aspx\main\video_show.aspx" />
+    <Content Include="aspx\main\windows.aspx" />
+    <Content Include="aspx\main\windows_list.aspx" />
+    <Content Include="aspx\main\windows_show.aspx" />
     <Content Include="aspx\plugin\feedback.aspx" />
     <Content Include="aspx\plugin\link.aspx" />
     <Content Include="crossdomain.xml" />
@@ -485,7 +491,6 @@
     <Content Include="templates\main\css\flexslider.css" />
     <Content Include="templates\main\css\lightbox.css" />
     <Content Include="templates\main\css\style.css" />
-    <Content Include="templates\main\index_bak.html" />
     <Content Include="templates\main\down.html" />
     <Content Include="templates\main\down_list.html" />
     <Content Include="templates\main\down_show.html" />

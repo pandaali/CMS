@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2017/4/13 16:44:29.
-		本页面代码由DTcms模板引擎生成于 2017/4/13 16:44:29. 
+		This page was created by DTcms Template Engine at 2017/4/13 20:14:19.
+		本页面代码由DTcms模板引擎生成于 2017/4/13 20:14:19. 
 	*/
 
 	base.OnInit(e);
@@ -80,7 +80,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\r\n<!--/Header-->\r\n\r\n<div class=\"section clearfix\">\r\n  <div class=\"ntitle\">\r\n    <h2>\r\n      <a href=\"");
 	templateBuilder.Append(linkurl("news"));
 
-	templateBuilder.Append("\">新闻资讯<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <!--类别-->\r\n      ");
+	templateBuilder.Append("\">互联网这点事<em></em></a>\r\n    </h2>\r\n    <p>\r\n      <!--类别-->\r\n      ");
 	DataTable newsCList = get_category_child_list("news",0);
 
 	int ncdr__loop__id=0;
@@ -357,7 +357,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\">留言反馈</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("link"));
 
-	templateBuilder.Append("\">友情链接</a>|\r\n      <a target=\"_blank\" href=\"");
+	templateBuilder.Append("\">友情链接</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append("<%linkurl(\" content\",\"about\")%>");
 	templateBuilder.Append("\">关于我们</a>|\r\n  </div>\r\n  <div class=\"copyright\">\r\n    <p>版权所有 ");
 	templateBuilder.Append(site.company.ToString());
