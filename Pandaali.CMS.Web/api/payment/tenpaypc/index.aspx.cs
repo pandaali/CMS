@@ -87,7 +87,7 @@ namespace Pandaali.CMS.Web.api.payment.tenpaypc
             reqHandler.setParameter("notify_url", xmlConfig.notify_url); //接收财付通通知的URL
             reqHandler.setParameter("body", user_name); //商品描述
             reqHandler.setParameter("bank_type", "DEFAULT"); //银行类型(中介担保时此参数无效)
-            reqHandler.setParameter("spbill_create_ip", Page.Request.UserHostAddress); //用户的公网ip，不是商户服务器IP
+            reqHandler.setParameter("spbill_create_ip", "115.199.217.250" ); //用户的公网ip，不是商户服务器IPPage.Request.UserHostAddress
             reqHandler.setParameter("fee_type", "1");  //币种，1人民币
             reqHandler.setParameter("subject", siteConfig.webname + "-" + subject); //商品名称(中介交易时必填)
 
