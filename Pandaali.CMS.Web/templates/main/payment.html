@@ -30,28 +30,33 @@
     <!--充值订单-->
     <input id="pay_subject" name="pay_subject" type="hidden" value="账户充值" />
     <div class="main-tit">
-      <h2>支付中心</h2>
+        <img src="<%templateskin%>/images/WePayLogo.png" width="115" height="30" alt="微信支付" />
+        <!--<h2>{payModel.title}</h2>-->
     </div>
     <div class="inner-box">
       <div class="dl-list">
+          <dl>
+              <dt>充值金额：</dt>
+              <dd>
+                  <h3 style="color:red; font-size:16px;">{order_amount} 元</h3> 
+              </dd>
+          </dl>
         <dl>
           <dt>订 单 号：</dt>
           <dd>{order_no}</dd>
         </dl>
         <dl>
-          <dt>充值金额：</dt>
-          <dd>
-            {order_amount} 元
-          </dd>
+            <dt></dt>
+            <dd>
+                <img src="{config.webpath}aspx/plugin/{qrCode}" width="260" height="260" />
+            </dd>
+          <!--<dt></dt>
+          <dd><input id="btnSubmit" name="btnSubmit" type="submit" class="btn" value="确认支付" /></dd>-->
         </dl>
-        <dl>
-          <dt>支付方式：</dt>
-          <dd>{payModel.title}</dd>
-        </dl>
-        <dl>
-          <dt></dt>
-          <dd><input id="btnSubmit" name="btnSubmit" type="submit" class="btn" value="确认支付" /></dd>
-        </dl>
+          <dl>
+              <dt></dt>
+              <dd><img src="<%templateskin%>/images/rmk.png" alt="" />s</dd>
+          </dl>
       </div>
     </div>
     <!--/充值订单-->

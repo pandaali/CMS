@@ -1431,7 +1431,7 @@ namespace Pandaali.CMS.Web.tools
                 return;
             }
             //生成订单号
-            string order_no = "R" + Utils.GetOrderNumber(); //订单号R开头为充值订单
+            string order_no = "R" + WxPayAPI.WxPayApi.GenerateOutTradeNo();//订单号R开头为充值订单Utils.GetOrderNumber();
             new BLL.user_recharge().Add(model.id, model.user_name, order_no, payment_id, amount);
             //保存成功后返回订单号
             context.Response.Write("{\"status\":1, \"msg\":\"订单保存成功！\", \"url\":\""

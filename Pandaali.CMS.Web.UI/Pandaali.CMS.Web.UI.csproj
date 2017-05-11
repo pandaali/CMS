@@ -152,6 +152,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Pandaali.CMS.API\Pandaali.CMS.API.csproj">
+      <Project>{f75319df-acf3-40f5-832f-87c9fda346e8}</Project>
+      <Name>Pandaali.CMS.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Pandaali.CMS.BLL\Pandaali.CMS.BLL.csproj">
       <Project>{ad6336af-c8bc-4bd8-9222-813752f7c363}</Project>
       <Name>Pandaali.CMS.BLL</Name>

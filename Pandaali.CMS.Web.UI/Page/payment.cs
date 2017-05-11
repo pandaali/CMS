@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Web;
 using Pandaali.CMS.Common;
+using WxPayAPI;
 
 namespace Pandaali.CMS.Web.UI.Page
 {
@@ -12,6 +13,8 @@ namespace Pandaali.CMS.Web.UI.Page
         protected string order_no = string.Empty;
         protected string order_type = string.Empty;
         protected decimal order_amount = 0;
+
+        protected string qrCode = string.Empty;
 
         protected Model.orderconfig orderConfig = new BLL.orderconfig().loadConfig(); //订单配置
         protected Model.users userModel; //用户
@@ -35,6 +38,7 @@ namespace Pandaali.CMS.Web.UI.Page
             //取得处事类型
             action = DTRequest.GetString("action");
             order_no = DTRequest.GetString("order_no");
+
             if (order_no.ToUpper().StartsWith("R")) //充值订单
             {
                 order_type = DTEnums.AmountTypeEnum.Recharge.ToString().ToLower();
@@ -96,6 +100,19 @@ namespace Pandaali.CMS.Web.UI.Page
                             return;
                         }
                         order_amount = rechargeModel.amount; //订单金额
+
+                        //开始生成扫码支付二维码
+                        NativePay nativePay = new NativePay();
+
+                        //生成扫码支付模式一url
+                        //string url = nativePay.GetPrePayUrl(order_no, "会员充值", order_amount);
+
+                        //生成扫码支付模式二url
+                        string url = nativePay.GetPayUrl(order_no, "会员充值", order_amount);
+
+                        //将url生成二维码图片
+                        //Image1.ImageUrl = "MakeQRCode.aspx?data=" + HttpUtility.UrlEncode(url1);
+                        qrCode = "MakeQRCode.aspx?data=" + HttpUtility.UrlEncode(url);
                     }
                     else if (order_no.ToUpper().StartsWith("B")) //商品订单
                     {
@@ -156,7 +173,6 @@ namespace Pandaali.CMS.Web.UI.Page
                             HttpContext.Current.Response.Redirect(linkurl("error", "?msg=" + Utils.UrlEncode("出错啦，订单号不存在或已删除！")));
                             return;
                         }
-
                     }
                     else if (order_no.ToUpper().StartsWith("B")) //商品订单
                     {

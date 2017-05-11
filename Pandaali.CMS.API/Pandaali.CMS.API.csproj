@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LitJson">
+      <HintPath>E:\开发\服务端\ReKuu\packages\weixinpay\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="QuickMark">
+      <HintPath>E:\开发\服务端\ReKuu\packages\weixinpay\QuickMark.dll</HintPath>
+    </Reference>
     <Reference Include="Senparc.Weixin.MP">
       <HintPath>..\DTcms.Web\bin\Senparc.Weixin.MP.dll</HintPath>
     </Reference>
@@ -46,6 +52,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="ThoughtWorks.QRCode">
+      <HintPath>E:\开发\服务端\ReKuu\packages\weixinpay\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OAuth\feixin_helper.cs" />
@@ -67,6 +76,22 @@
     <Compile Include="Payment\tenpaypc\ResponseHandler.cs" />
     <Compile Include="Payment\tenpaypc\TenpayHttpClient.cs" />
     <Compile Include="Payment\tenpaypc\TenpayUtil.cs" />
+    <Compile Include="Payment\wxpaypc\business\DownloadBill.cs" />
+    <Compile Include="Payment\wxpaypc\business\JsApiPay.cs" />
+    <Compile Include="Payment\wxpaypc\business\MicroPay.cs" />
+    <Compile Include="Payment\wxpaypc\business\NativeNotify.cs" />
+    <Compile Include="Payment\wxpaypc\business\NativePay.cs" />
+    <Compile Include="Payment\wxpaypc\business\OrderQuery.cs" />
+    <Compile Include="Payment\wxpaypc\business\Refund.cs" />
+    <Compile Include="Payment\wxpaypc\business\RefundQuery.cs" />
+    <Compile Include="Payment\wxpaypc\business\ResultNotify.cs" />
+    <Compile Include="Payment\wxpaypc\Config.cs" />
+    <Compile Include="Payment\wxpaypc\Data.cs" />
+    <Compile Include="Payment\wxpaypc\Exception.cs" />
+    <Compile Include="Payment\wxpaypc\HttpService.cs" />
+    <Compile Include="Payment\wxpaypc\Log.cs" />
+    <Compile Include="Payment\wxpaypc\Notify.cs" />
+    <Compile Include="Payment\wxpaypc\WxPayApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

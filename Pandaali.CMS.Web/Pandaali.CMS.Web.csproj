@@ -14,7 +14,7 @@
     <RootNamespace>Pandaali.CMS.Web</RootNamespace>
     <AssemblyName>Pandaali.CMS.Web</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <SccProjectName>Svn</SccProjectName>
     <SccLocalPath>Svn</SccLocalPath>
     <SccAuxPath>Svn</SccAuxPath>
@@ -69,6 +69,10 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="ThoughtWorks.QRCode, Version=1.0.3990.25764, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>E:\开发\服务端\ReKuu\packages\weixinpay\ThoughtWorks.QRCode.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\article\article_edit.aspx" />
@@ -181,6 +185,8 @@
     <Content Include="api\payment\tenpaypc\index.aspx" />
     <Content Include="api\payment\tenpaypc\notify_url.aspx" />
     <Content Include="api\payment\tenpaypc\return_url.aspx" />
+    <Content Include="api\payment\wxpaypc\NativeNotifyPage.aspx" />
+    <Content Include="api\payment\wxpaypc\ResultNotifyPage.aspx" />
     <Content Include="aspx\main\cart.aspx" />
     <Content Include="aspx\main\content.aspx" />
     <Content Include="aspx\main\down.aspx" />
@@ -222,6 +228,7 @@
     <Content Include="aspx\main\windows_show.aspx" />
     <Content Include="aspx\plugin\feedback.aspx" />
     <Content Include="aspx\plugin\link.aspx" />
+    <Content Include="aspx\plugin\MakeQRCode.aspx" />
     <Content Include="crossdomain.xml" />
     <Content Include="css\image1.gif" />
     <Content Include="css\image2.gif" />
@@ -511,11 +518,13 @@
     <Content Include="templates\main\images\next.png" />
     <Content Include="templates\main\images\pic-bg.png" />
     <Content Include="templates\main\images\prev.png" />
+    <Content Include="templates\main\images\rmk.png" />
     <Content Include="templates\main\images\search.png" />
     <Content Include="templates\main\images\slider.png" />
     <Content Include="templates\main\images\sprite.gif" />
     <Content Include="templates\main\images\user-avatar.png" />
     <Content Include="templates\main\images\user.png" />
+    <Content Include="templates\main\images\WePayLogo.png" />
     <Content Include="templates\main\index.html" />
     <Content Include="templates\main\index20170413.html" />
     <Content Include="templates\main\js\avatar.js" />
@@ -560,8 +569,218 @@
     <Content Include="templates\main\_header.html" />
     <Content Include="templates\main\_share_js.html" />
     <Content Include="templates\main\_ucenter_nav.html" />
+    <Content Include="upload\201503\25\201503251553231051.jpg" />
+    <Content Include="upload\201503\25\201503251553387052.jpg" />
+    <Content Include="upload\201503\25\201503251553466924.jpg" />
+    <Content Include="upload\201503\25\201503251553550852.jpg" />
+    <Content Include="upload\201503\25\201503251554034624.jpg" />
+    <Content Include="upload\201503\25\201503251554117928.jpg" />
+    <Content Include="upload\201504\16\201504161149414479.jpg" />
+    <Content Include="upload\201504\16\201504161205596364.jpg" />
+    <Content Include="upload\201504\16\201504161218505373.jpg" />
+    <Content Include="upload\201504\16\201504161229442885.jpg" />
+    <Content Include="upload\201504\16\201504161246140423.jpg" />
+    <Content Include="upload\201504\16\201504161254335201.jpg" />
+    <Content Include="upload\201504\16\201504161258558786.jpg" />
+    <Content Include="upload\201504\16\201504161303162262.jpg" />
+    <Content Include="upload\201504\16\201504161329185965.jpg" />
+    <Content Include="upload\201504\16\201504161336598829.jpg" />
+    <Content Include="upload\201504\17\201504170015481462.jpg" />
+    <Content Include="upload\201504\17\201504171052373891.jpg" />
+    <Content Include="upload\201504\17\201504171107187253.jpg" />
+    <Content Include="upload\201504\18\201504181230434303.jpg" />
+    <Content Include="upload\201504\18\201504181230437111.jpg" />
+    <Content Include="upload\201504\18\201504181230439139.jpg" />
+    <Content Include="upload\201504\18\201504181230440387.jpg" />
+    <Content Include="upload\201504\18\201504181230444755.jpg" />
+    <Content Include="upload\201504\18\201504181237019134.jpg" />
+    <Content Include="upload\201504\18\201504181237020070.jpg" />
+    <Content Include="upload\201504\18\201504181237021942.jpg" />
+    <Content Include="upload\201504\18\201504181237023658.jpg" />
+    <Content Include="upload\201504\18\201504181237029898.jpg" />
+    <Content Include="upload\201504\18\201504181241259978.jpg" />
+    <Content Include="upload\201504\18\201504181241262318.jpg" />
+    <Content Include="upload\201504\18\201504181241264190.jpg" />
+    <Content Include="upload\201504\18\201504181241265438.jpg" />
+    <Content Include="upload\201504\18\201504181241266686.jpg" />
+    <Content Include="upload\201504\18\201504181241268246.jpg" />
+    <Content Include="upload\201504\18\201504181241270898.jpg" />
+    <Content Include="upload\201504\18\201504181246376332.jpg" />
+    <Content Include="upload\201504\18\201504181246378360.jpg" />
+    <Content Include="upload\201504\18\201504181246381948.jpg" />
+    <Content Include="upload\201504\18\201504181246383508.jpg" />
+    <Content Include="upload\201504\18\201504181252033785.jpg" />
+    <Content Include="upload\201504\18\201504181252034877.jpg" />
+    <Content Include="upload\201504\18\201504181252036437.jpg" />
+    <Content Include="upload\201504\18\201504181252040962.jpg" />
+    <Content Include="upload\201504\18\201504181255546022.jpg" />
+    <Content Include="upload\201504\18\201504181255546646.jpg" />
+    <Content Include="upload\201504\18\201504181255552730.jpg" />
+    <Content Include="upload\201504\18\201504181258575445.jpg" />
+    <Content Include="upload\201504\18\201504181258580562.jpg" />
+    <Content Include="upload\201504\18\201504181258586174.jpg" />
+    <Content Include="upload\201504\18\201504181343191605.jpg" />
+    <Content Include="upload\201504\18\201504181343192455.jpg" />
+    <Content Include="upload\201504\18\201504181347324908.jpg" />
+    <Content Include="upload\201504\18\201504181347330156.jpg" />
+    <Content Include="upload\201504\18\201504181350088573.jpg" />
+    <Content Include="upload\201504\18\201504181350094036.jpg" />
+    <Content Include="upload\201504\18\201504181353090559.jpg" />
+    <Content Include="upload\201504\18\201504181353096645.jpg" />
+    <Content Include="upload\201504\18\201504181356412687.jpg" />
+    <Content Include="upload\201504\18\201504181356417887.jpg" />
+    <Content Include="upload\201504\18\201504181404061134.jpg" />
+    <Content Include="upload\201504\18\201504181404062204.jpg" />
+    <Content Include="upload\201504\18\201504181404066434.jpg" />
+    <Content Include="upload\201504\18\201504181416245191.jpg" />
+    <Content Include="upload\201504\18\201504181416251481.jpg" />
+    <Content Include="upload\201504\18\201504181420529760.jpg" />
+    <Content Include="upload\201504\18\201504181420530761.jpg" />
+    <Content Include="upload\201504\18\201504181420533291.jpg" />
+    <Content Include="upload\201504\18\201504181426524427.jpg" />
+    <Content Include="upload\201504\18\201504181426525744.jpg" />
+    <Content Include="upload\201504\18\201504181426531161.jpg" />
+    <Content Include="upload\201504\18\201504181431411505.jpg" />
+    <Content Include="upload\201504\18\201504181431416818.jpg" />
+    <Content Include="upload\201504\18\201504182310542211.jpg" />
+    <Content Include="upload\201504\18\201504182324354376.jpg" />
+    <Content Include="upload\201504\18\201504182337532823.jpg" />
+    <Content Include="upload\201504\18\201504182346214199.png" />
+    <Content Include="upload\201504\18\201504182357178753.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181230434303.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181230437111.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181230439139.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181230440387.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181230444755.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181237019134.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181237020070.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181237021942.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181237023658.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181237029898.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181241259978.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181241262318.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181241264190.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181241265438.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181241266686.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181241268246.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181241270898.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181246376332.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181246378360.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181246381948.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181246383508.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181252033785.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181252034877.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181252036437.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181252040962.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181255546022.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181255546646.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181255552730.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181258575445.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181258580562.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181258586174.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181343191605.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181343192455.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181347324908.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181347330156.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181350088573.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181350094036.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181353090559.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181353096645.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181356412687.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181356417887.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181404061134.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181404062204.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181404066434.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181416245191.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181416251481.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181420529760.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181420530761.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181420533291.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181426524427.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181426525744.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181426531161.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181431411505.jpg" />
+    <Content Include="upload\201504\18\thumb_201504181431416818.jpg" />
+    <Content Include="upload\201504\19\201504190003164918.jpg" />
+    <Content Include="upload\201504\19\201504190025169765.jpg" />
+    <Content Include="upload\201504\19\201504190033256767.png" />
+    <Content Include="upload\201504\19\201504190039179625.png" />
+    <Content Include="upload\201504\19\201504190047488297.png" />
+    <Content Include="upload\201504\19\201504190052499389.png" />
+    <Content Include="upload\201504\19\201504190056149231.png" />
+    <Content Include="upload\201504\19\201504190108304682.png" />
+    <Content Include="upload\201504\19\201504190114279783.png" />
+    <Content Include="upload\201504\19\201504190123410600.png" />
+    <Content Include="upload\201504\19\201504191342113486.jpg" />
+    <Content Include="upload\201504\19\201504191354133349.jpg" />
+    <Content Include="upload\201504\19\201504191415058556.jpg" />
+    <Content Include="upload\201504\19\201504191419256058.jpg" />
+    <Content Include="upload\201504\19\201504191423290999.jpg" />
+    <Content Include="upload\201504\19\201504191427360596.jpg" />
+    <Content Include="upload\201504\19\201504191433361724.jpg" />
+    <Content Include="upload\201504\19\201504191438024482.jpg" />
+    <Content Include="upload\201504\19\201504191450190071.jpg" />
+    <Content Include="upload\201504\19\201504191502166718.jpg" />
+    <Content Include="upload\201504\19\201504191509158578.jpg" />
+    <Content Include="upload\201504\19\201504191553366190.jpg" />
+    <Content Include="upload\201504\19\201504191612121323.jpg" />
+    <Content Include="upload\201504\19\201504191621314730.jpg" />
+    <Content Include="upload\201504\19\201504191628502165.jpg" />
+    <Content Include="upload\201504\19\201504191635524475.jpg" />
+    <Content Include="upload\201504\20\201504200046589514.jpg" />
+    <Content Include="upload\201504\20\201504200046594439.jpg" />
+    <Content Include="upload\201504\20\201504200059017695.jpg" />
+    <Content Include="upload\201504\20\201504200059022920.jpg" />
+    <Content Include="upload\201504\20\201504200119256512.jpg" />
+    <Content Include="upload\201504\20\201504200119262837.jpg" />
+    <Content Include="upload\201504\20\201504200154277661.jpg" />
+    <Content Include="upload\201504\20\201504200154282586.jpg" />
+    <Content Include="upload\201504\20\201504200214466608.jpg" />
+    <Content Include="upload\201504\20\201504200214471783.jpg" />
+    <Content Include="upload\201504\20\201504200225100165.jpg" />
+    <Content Include="upload\201504\20\201504200225107390.jpg" />
+    <Content Include="upload\201504\20\201504200233019087.jpg" />
+    <Content Include="upload\201504\20\201504200233024338.jpg" />
+    <Content Include="upload\201504\20\201504200239192345.jpg" />
+    <Content Include="upload\201504\20\201504200239197670.jpg" />
+    <Content Include="upload\201504\20\201504200242250674.jpg" />
+    <Content Include="upload\201504\20\201504200253026047.jpg" />
+    <Content Include="upload\201504\20\201504200258403759.jpg" />
+    <Content Include="upload\201504\20\201504200314272543.jpg" />
+    <Content Include="upload\201504\20\201504200318534459.jpg" />
+    <Content Include="upload\201504\20\201504200327369421.jpg" />
+    <Content Include="upload\201504\20\201504200333240710.jpg" />
+    <Content Include="upload\201504\20\201504200341260763.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200046589514.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200046594439.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200059017695.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200059022920.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200119256512.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200119262837.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200154277661.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200154282586.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200214466608.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200214471783.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200225100165.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200225107390.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200233019087.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200233024338.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200239192345.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200239197670.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200242250674.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200253026047.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200258403759.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200314272543.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200318534459.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200327369421.jpg" />
+    <Content Include="upload\201504\20\thumb_201504200333240710.jpg" />
+    <Content Include="upload\201704\13\201704131834495068.png" />
+    <Content Include="upload\201704\13\201704132034020254.jpg" />
+    <Content Include="upload\201704\13\201704132047562670.jpg" />
     <Content Include="watermark.png" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -1117,6 +1336,27 @@
       <DependentUpon>return_url.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="api\payment\wxpaypc\NativeNotifyPage.aspx.cs">
+      <DependentUpon>NativeNotifyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="api\payment\wxpaypc\NativeNotifyPage.aspx.designer.cs">
+      <DependentUpon>NativeNotifyPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="api\payment\wxpaypc\ResultNotifyPage.aspx.cs">
+      <DependentUpon>ResultNotifyPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="api\payment\wxpaypc\ResultNotifyPage.aspx.designer.cs">
+      <DependentUpon>ResultNotifyPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspx\plugin\MakeQRCode.aspx.cs">
+      <DependentUpon>MakeQRCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspx\plugin\MakeQRCode.aspx.designer.cs">
+      <DependentUpon>MakeQRCode.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tools\admin_ajax.ashx.cs">
       <DependentUpon>admin_ajax.ashx</DependentUpon>
@@ -1143,7 +1383,7 @@
   <ItemGroup>
     <Folder Include="html\" />
     <Folder Include="plugins\" />
-    <Folder Include="upload\" />
+    <Folder Include="upload\201504\29\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="tools\admin_ajax.ashx" />
@@ -1194,6 +1434,27 @@
       <Name>Pandaali.CMS.Web.UI</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="api\payment\wxpaypc\cert\apiclient_cert.p12" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\webconfig.pubxml" />
+    <Content Include="upload\201504\18\201504182311117470.zip" />
+    <Content Include="upload\201504\18\201504182322569933.zip" />
+    <Content Include="upload\201504\18\201504182330109147.zip" />
+    <Content Include="upload\201504\18\201504182342075293.zip" />
+    <Content Include="upload\201504\18\201504182357255775.zip" />
+    <Content Include="upload\201504\19\201504190003237865.zip" />
+    <Content Include="upload\201504\19\201504190022397292.zip" />
+    <Content Include="upload\201504\19\201504190030190442.zip" />
+    <Content Include="upload\201504\19\201504190039107074.rar" />
+    <Content Include="upload\201504\19\201504190048014374.zip" />
+    <Content Include="upload\201504\19\201504190053004277.zip" />
+    <Content Include="upload\201504\19\201504190056330184.zip" />
+    <Content Include="upload\201504\19\201504190101129112.zip" />
+    <Content Include="upload\201504\19\201504190111527909.zip" />
+    <Content Include="upload\201504\19\201504190121229928.zip" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -1209,7 +1470,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>35708</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost</IISUrl>
+          <IISUrl>http://localhost:35708/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

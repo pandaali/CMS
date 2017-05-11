@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2017/4/19 12:24:04.
-		本页面代码由DTcms模板引擎生成于 2017/4/19 12:24:04. 
+		This page was created by DTcms Template Engine at 2017/5/9 17:54:17.
+		本页面代码由DTcms模板引擎生成于 2017/5/9 17:54:17. 
 	*/
 
 	base.OnInit(e);
@@ -96,13 +96,21 @@ override protected void OnInit(EventArgs e)
 	if (order_type=="recharge")
 	{
 
-	templateBuilder.Append("\r\n    <!--充值订单-->\r\n    <input id=\"pay_subject\" name=\"pay_subject\" type=\"hidden\" value=\"账户充值\" />\r\n    <div class=\"main-tit\">\r\n      <h2>支付中心</h2>\r\n    </div>\r\n    <div class=\"inner-box\">\r\n      <div class=\"dl-list\">\r\n        <dl>\r\n          <dt>订 单 号：</dt>\r\n          <dd>");
-	templateBuilder.Append(Utils.ObjectToStr(order_no));
-	templateBuilder.Append("</dd>\r\n        </dl>\r\n        <dl>\r\n          <dt>充值金额：</dt>\r\n          <dd>\r\n            ");
-	templateBuilder.Append(Utils.ObjectToStr(order_amount));
-	templateBuilder.Append(" 元\r\n          </dd>\r\n        </dl>\r\n        <dl>\r\n          <dt>支付方式：</dt>\r\n          <dd>");
+	templateBuilder.Append("\r\n    <!--充值订单-->\r\n    <input id=\"pay_subject\" name=\"pay_subject\" type=\"hidden\" value=\"账户充值\" />\r\n    <div class=\"main-tit\">\r\n        <img src=\"");
+	templateBuilder.Append("/templates/main");
+	templateBuilder.Append("/images/WePayLogo.png\" width=\"115\" height=\"30\" alt=\"微信支付\" />\r\n        <!--<h2>");
 	templateBuilder.Append(Utils.ObjectToStr(payModel.title));
-	templateBuilder.Append("</dd>\r\n        </dl>\r\n        <dl>\r\n          <dt></dt>\r\n          <dd><input id=\"btnSubmit\" name=\"btnSubmit\" type=\"submit\" class=\"btn\" value=\"确认支付\" /></dd>\r\n        </dl>\r\n      </div>\r\n    </div>\r\n    <!--/充值订单-->\r\n    ");
+	templateBuilder.Append("</h2>-->\r\n    </div>\r\n    <div class=\"inner-box\">\r\n      <div class=\"dl-list\">\r\n          <dl>\r\n              <dt>充值金额：</dt>\r\n              <dd>\r\n                  <h3 style=\"color:red; font-size:16px;\">");
+	templateBuilder.Append(Utils.ObjectToStr(order_amount));
+	templateBuilder.Append(" 元</h3> \r\n              </dd>\r\n          </dl>\r\n        <dl>\r\n          <dt>订 单 号：</dt>\r\n          <dd>");
+	templateBuilder.Append(Utils.ObjectToStr(order_no));
+	templateBuilder.Append("</dd>\r\n        </dl>\r\n        <dl>\r\n            <dt></dt>\r\n            <dd>\r\n                <img src=\"");
+	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
+	templateBuilder.Append("aspx/plugin/");
+	templateBuilder.Append(Utils.ObjectToStr(qrCode));
+	templateBuilder.Append("\" width=\"260\" height=\"260\" />\r\n            </dd>\r\n          <!--<dt></dt>\r\n          <dd><input id=\"btnSubmit\" name=\"btnSubmit\" type=\"submit\" class=\"btn\" value=\"确认支付\" /></dd>-->\r\n        </dl>\r\n          <dl>\r\n              <dt></dt>\r\n              <dd><img src=\"");
+	templateBuilder.Append("/templates/main");
+	templateBuilder.Append("/images/rmk.png\" alt=\"\" />s</dd>\r\n          </dl>\r\n      </div>\r\n    </div>\r\n    <!--/充值订单-->\r\n    ");
 	}	//end for if
 
 	if (order_type=="buygoods")
