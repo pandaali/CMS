@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2017/5/9 17:54:16.
-		本页面代码由DTcms模板引擎生成于 2017/5/9 17:54:16. 
+		This page was created by DTcms Template Engine at 2017/5/13 11:25:49.
+		本页面代码由DTcms模板引擎生成于 2017/5/13 11:25:49. 
 	*/
 
 	base.OnInit(e);
@@ -37,20 +37,20 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("script>\r\n</head>\r\n\r\n<body>\r\n<!--Header-->\r\n");
 
 	templateBuilder.Append("<div class=\"header\">\r\n  <div class=\"header-wrap\">\r\n    <div class=\"section\">\r\n      <div class=\"left-box\">\r\n        <a class=\"logo\" href=\"");
-	templateBuilder.Append(linkurl("index"));
+	templateBuilder.Append(linkurl("Default"));
 
 	templateBuilder.Append("\">");
 	templateBuilder.Append(Utils.ObjectToStr(site.name));
 	templateBuilder.Append("</a>\r\n        <p class=\"nav\">\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("news"));
+	templateBuilder.Append(linkurl("rekuutop"));
 
-	templateBuilder.Append("\">互联网这点事</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("windows"));
+	templateBuilder.Append("\">热酷头条</a>\r\n          <a href=\"");
+	templateBuilder.Append(linkurl("rekuushare"));
 
-	templateBuilder.Append("\">Win软件</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("mac"));
+	templateBuilder.Append("\">知识分享</a>\r\n          <a href=\"");
+	templateBuilder.Append(linkurl("rekuuresurce"));
 
-	templateBuilder.Append("\">Mac软件</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
+	templateBuilder.Append("\">资源共享</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
 	templateBuilder.Append(linkurl("search"));
 
 	templateBuilder.Append("', '#keywords');return false};\" placeholder=\"输入回车搜索\" x-webkit-speech=\"\" />\r\n        <input class=\"submit\" type=\"submit\" onclick=\"SiteSearch('");
@@ -58,16 +58,16 @@ override protected void OnInit(EventArgs e)
 
 	templateBuilder.Append("', '#keywords');\" value=\"搜索\" />\r\n      </div>\r\n      <div class=\"right-box\">\r\n      <script type=\"text/javascript\">\r\n			$.ajax({\r\n				type: \"POST\",\r\n				url: \"");
 	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
-	templateBuilder.Append("tools/submit_ajax.ashx?action=user_check_login\",\r\n				dataType: \"json\",\r\n				timeout: 20000,\r\n				success: function (data, textStatus) {\r\n					if (data.status == 1) {\r\n						$(\"#menu\").prepend('<li class=\"line\"><a href=\"");
+	templateBuilder.Append("tools/submit_ajax.ashx?action=user_check_login\",\r\n				dataType: \"json\",\r\n				timeout: 20000,\r\n				success: function (data, textStatus) {\r\n				    if (data.status == 1) {\r\n					    $(\"#menu\").prepend('<li class=\"line\"><a href=\"");
 	templateBuilder.Append(linkurl("usercenter","exit"));
 
-	templateBuilder.Append("\">退出</a></li>');\r\n						$(\"#menu\").prepend('<li class=\"login\"><em></em><a href=\"");
+	templateBuilder.Append("\">退出</a></li>');\r\n					    $(\"#menu\").prepend('<li class=\"login\"><em></em><a href=\"");
 	templateBuilder.Append(linkurl("usercenter","index"));
 
-	templateBuilder.Append("\">会员中心</a></li>');\r\n					} else {\r\n						$(\"#menu\").prepend('<li class=\"line\"><a href=\"");
+	templateBuilder.Append("\">会员中心</a></li>');\r\n					} else {\r\n				        $(\"#menu\").prepend('<li class=\"line\"><a href=\"");
 	templateBuilder.Append(linkurl("register"));
 
-	templateBuilder.Append("\">注册</a></li>');\r\n						$(\"#menu\").prepend('<li class=\"login\"><em></em><a href=\"");
+	templateBuilder.Append("\">注册</a></li>');\r\n				        $(\"#menu\").prepend('<li class=\"login\"><em></em><a href=\"");
 	templateBuilder.Append(linkurl("login"));
 
 	templateBuilder.Append("\">登录</a></li>');\r\n					}\r\n				}\r\n			});\r\n		</");
@@ -358,7 +358,8 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("link"));
 
 	templateBuilder.Append("\">友情链接</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append("<%linkurl(\" content\",\"about\")%>");
+	templateBuilder.Append(linkurl("content","about"));
+
 	templateBuilder.Append("\">关于我们</a>|\r\n  </div>\r\n  <div class=\"copyright\">\r\n    <p>版权所有 ");
 	templateBuilder.Append(site.company.ToString());
 

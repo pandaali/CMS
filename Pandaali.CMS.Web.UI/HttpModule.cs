@@ -112,7 +112,8 @@ namespace Pandaali.CMS.Web.UI
 
                         //如果与URL节点匹配则重写
                         if (Regex.IsMatch(requestPage, string.Format("^/{0}$", newPattern), RegexOptions.None | RegexOptions.IgnoreCase)
-                            || (model.page == "index.aspx" && Regex.IsMatch(requestPage, string.Format("^/{0}$", item.pattern), RegexOptions.None | RegexOptions.IgnoreCase)))
+                            || (model.page == "index.aspx" && Regex.IsMatch(requestPage, string.Format("^/{0}$", item.pattern), RegexOptions.None | RegexOptions.IgnoreCase))
+                            || (model.page == "Default.aspx" && Regex.IsMatch(requestPage, string.Format("^/{0}$", item.pattern), RegexOptions.None | RegexOptions.IgnoreCase)))
                         {
                             //如果开启生成静态、且是频道页或首页,则映射重写到HTML目录
                             if (siteConfig.staticstatus == 2 && (model.channel.Length > 0 || model.page.ToLower() == "index.aspx")) //频道页

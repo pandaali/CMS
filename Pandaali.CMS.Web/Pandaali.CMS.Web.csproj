@@ -187,8 +187,13 @@
     <Content Include="api\payment\tenpaypc\return_url.aspx" />
     <Content Include="api\payment\wxpaypc\NativeNotifyPage.aspx" />
     <Content Include="api\payment\wxpaypc\ResultNotifyPage.aspx" />
+    <Content Include="aspx\js\common.js" />
+    <Content Include="aspx\js\layindex.js" />
+    <Content Include="aspx\js\laymain.js" />
+    <Content Include="aspx\js\uploader.js" />
     <Content Include="aspx\main\cart.aspx" />
     <Content Include="aspx\main\content.aspx" />
+    <Content Include="aspx\main\Default.aspx" />
     <Content Include="aspx\main\down.aspx" />
     <Content Include="aspx\main\down_list.aspx" />
     <Content Include="aspx\main\down_show.aspx" />
@@ -226,9 +231,24 @@
     <Content Include="aspx\main\windows.aspx" />
     <Content Include="aspx\main\windows_list.aspx" />
     <Content Include="aspx\main\windows_show.aspx" />
+    <Content Include="aspx\plugin\article_share.aspx" />
     <Content Include="aspx\plugin\feedback.aspx" />
     <Content Include="aspx\plugin\link.aspx" />
     <Content Include="aspx\plugin\MakeQRCode.aspx" />
+    <Content Include="aspx\skin\base.css" />
+    <Content Include="aspx\skin\default\ie_update.jpg" />
+    <Content Include="aspx\skin\default\loadimg.gif" />
+    <Content Include="aspx\skin\default\logo.png" />
+    <Content Include="aspx\skin\default\nav\home.png" />
+    <Content Include="aspx\skin\default\nav\order.png" />
+    <Content Include="aspx\skin\default\nav\pus.png" />
+    <Content Include="aspx\skin\default\nav\sys.png" />
+    <Content Include="aspx\skin\default\nav\user.png" />
+    <Content Include="aspx\skin\default\order_speed.gif" />
+    <Content Include="aspx\skin\default\skin_icons.png" />
+    <Content Include="aspx\skin\default\style.css" />
+    <Content Include="aspx\skin\default\valid_icons.png" />
+    <Content Include="aspx\skin\layout.css" />
     <Content Include="crossdomain.xml" />
     <Content Include="css\image1.gif" />
     <Content Include="css\image2.gif" />
@@ -445,7 +465,7 @@
     <Content Include="images\oauth\renren.png" />
     <Content Include="images\oauth\taobao.png" />
     <Content Include="images\oauth\weibo.png" />
-    <Content Include="index_bak.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="index.aspx" />
     <Content Include="scripts\artdialog\dialog-min.js" />
     <Content Include="scripts\artdialog\dialog-plus-min.js" />
@@ -495,9 +515,11 @@
     <Content Include="templates\main\about.xml" />
     <Content Include="templates\main\cart.html" />
     <Content Include="templates\main\content.html" />
+    <Content Include="templates\main\css\app.css" />
     <Content Include="templates\main\css\flexslider.css" />
     <Content Include="templates\main\css\lightbox.css" />
     <Content Include="templates\main\css\style.css" />
+    <Content Include="templates\main\css\wx_wz.css" />
     <Content Include="templates\main\down.html" />
     <Content Include="templates\main\down_list.html" />
     <Content Include="templates\main\down_show.html" />
@@ -525,6 +547,7 @@
     <Content Include="templates\main\images\user-avatar.png" />
     <Content Include="templates\main\images\user.png" />
     <Content Include="templates\main\images\WePayLogo.png" />
+    <Content Include="templates\main\Default.html" />
     <Content Include="templates\main\index.html" />
     <Content Include="templates\main\index20170413.html" />
     <Content Include="templates\main\js\avatar.js" />
@@ -1349,6 +1372,13 @@
     </Compile>
     <Compile Include="api\payment\wxpaypc\ResultNotifyPage.aspx.designer.cs">
       <DependentUpon>ResultNotifyPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="aspx\plugin\article_share.aspx.cs">
+      <DependentUpon>article_share.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="aspx\plugin\article_share.aspx.designer.cs">
+      <DependentUpon>article_share.aspx</DependentUpon>
     </Compile>
     <Compile Include="aspx\plugin\MakeQRCode.aspx.cs">
       <DependentUpon>MakeQRCode.aspx</DependentUpon>

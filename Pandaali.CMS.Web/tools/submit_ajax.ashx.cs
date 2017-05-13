@@ -24,6 +24,9 @@ namespace Pandaali.CMS.Web.tools
 
             switch (action)
             {
+                case "default_list"://获取首页列表下一页内容
+                    default_list(context);
+                    break;
                 case "comment_add": //提交评论
                     comment_add(context);
                     break;
@@ -125,6 +128,44 @@ namespace Pandaali.CMS.Web.tools
                     break;
             }
         }
+
+        #region 提交评论的处理方法===========================
+        private void default_list(HttpContext context)
+        {
+            StringBuilder strTxt = new StringBuilder();
+
+            string channel_name = DTRequest.GetFormString("channel_name");
+            int category_id = DTRequest.GetFormInt("category_id");
+            int page_size = DTRequest.GetFormInt("page_size");
+            int page_index = DTRequest.GetFormInt("page_index");
+            string strwhere = DTRequest.GetFormString("strwhere");
+            string orderby = DTRequest.GetFormString("orderby");
+            int totalcount = 0;
+
+            DataTable dt = new DataTable();
+            if (!string.IsNullOrEmpty(channel_name))
+            {
+                dt = new BLL.article().GetList(channel_name, category_id, page_size, page_index, strwhere, orderby, out totalcount).Tables[0];
+                //如果记录存在
+                if (dt.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dt.Rows)
+                    {
+                        //                string = @"<li>
+                        //                <a href="" class="wximg" target="_blank"><img src="http://open.weixin.qq.com/qr/code/?username=cctvyscj" border="0" /></a>
+                        //                < a href = "<%linkurl("news_show",{dr[id]})%>" target = "_blank" class="wxright"><p class="wxname">央视财经<span>1小时前</span></p><p class="wxtitle">{dr[title]}</p></a>
+                        //            </li>";
+                        strTxt.Append("<li>");
+                        strTxt.Append("<a href=\"\" class=\"wximg\" target=\"_blank\"><img src=\"http://open.weixin.qq.com/qr/code/?username=cctvyscj\" border=\"0\" /></a>");
+                        strTxt.Append("<a href=\" \" target = \"_blank\" class=\"wxright\"><p class=\"wxname\">央视财经<span>1小时前</span></p><p class=\"wxtitle\">" + row["title"] + "</p></a>");
+                        strTxt.Append("</li>");
+                    }
+
+                    context.Response.Write(strTxt.ToString());
+                }
+            }
+        }
+        #endregion
 
         #region 提交评论的处理方法===========================
         private void comment_add(HttpContext context)

@@ -2,11 +2,11 @@
   <div class="header-wrap">
     <div class="section">
       <div class="left-box">
-        <a class="logo" href="<%linkurl("index")%>">{site.name}</a>
+        <a class="logo" href="<%linkurl("Default")%>">{site.name}</a>
         <p class="nav">
-          <a href="<%linkurl("news")%>">互联网这点事</a>
-          <a href="<%linkurl("windows")%>">Win软件</a>
-          <a href="<%linkurl("mac")%>">Mac软件</a>
+          <a href="<%linkurl("rekuutop")%>">热酷头条</a>
+          <a href="<%linkurl("rekuushare")%>">知识分享</a>
+          <a href="<%linkurl("rekuuresurce")%>">资源共享</a>
         </p>
       </div>
       <div class="search">
@@ -21,12 +21,12 @@
 				dataType: "json",
 				timeout: 20000,
 				success: function (data, textStatus) {
-					if (data.status == 1) {
-						$("#menu").prepend('<li class="line"><a href="<%linkurl("usercenter","exit")%>">退出</a></li>');
-						$("#menu").prepend('<li class="login"><em></em><a href="<%linkurl("usercenter","index")%>">会员中心</a></li>');
+				    if (data.status == 1) {
+					    $("#menu").prepend('<li class="line"><a href="<%linkurl("usercenter","exit")%>">退出</a></li>');
+					    $("#menu").prepend('<li class="login"><em></em><a href="<%linkurl("usercenter","index")%>">会员中心</a></li>');
 					} else {
-						$("#menu").prepend('<li class="line"><a href="<%linkurl("register")%>">注册</a></li>');
-						$("#menu").prepend('<li class="login"><em></em><a href="<%linkurl("login")%>">登录</a></li>');
+				        $("#menu").prepend('<li class="line"><a href="<%linkurl("register")%>">注册</a></li>');
+				        $("#menu").prepend('<li class="login"><em></em><a href="<%linkurl("login")%>">登录</a></li>');
 					}
 				}
 			});
