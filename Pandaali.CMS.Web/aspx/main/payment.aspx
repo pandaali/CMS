@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2017/5/13 11:25:49.
-		本页面代码由DTcms模板引擎生成于 2017/5/13 11:25:49. 
+		This page was created by DTcms Template Engine at 2017/5/16 11:08:53.
+		本页面代码由DTcms模板引擎生成于 2017/5/16 11:08:53. 
 	*/
 
 	base.OnInit(e);
@@ -43,9 +43,6 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\">");
 	templateBuilder.Append(Utils.ObjectToStr(site.name));
 	templateBuilder.Append("</a>\r\n        <p class=\"nav\">\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("rekuutop"));
-
-	templateBuilder.Append("\">热酷头条</a>\r\n          <a href=\"");
 	templateBuilder.Append(linkurl("rekuushare"));
 
 	templateBuilder.Append("\">知识分享</a>\r\n          <a href=\"");
@@ -72,7 +69,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("login"));
 
 	templateBuilder.Append("\">登录</a></li>');\r\n					}\r\n				}\r\n			});\r\n		</");
-	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li><a href=\"");
+	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li class=\"contact\"><a href=\"");
 	templateBuilder.Append(linkurl("content","contact"));
 
 	templateBuilder.Append("\">联系我们</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>");
@@ -206,8 +203,8 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("  版本号：");
 	templateBuilder.Append(Utils.GetVersion().ToString());
 
-	templateBuilder.Append("</p>\r\n    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>\r\n    <p><script src=\"https://s11.cnzz.com/z_stat.php?id=1261718968&web_id=1261718968\" language=\"JavaScript\"></");
-	templateBuilder.Append("script></p>\r\n  </div>\r\n</div>");
+	templateBuilder.Append("<script type=\"text/javascript\">var cnzz_protocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cspan id='cnzz_stat_icon_1261954413'%3E%3C/span%3E%3Cscript src='\" + cnzz_protocol + \"s4.cnzz.com/stat.php%3Fid%3D1261954413%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E\"));</");
+	templateBuilder.Append("script></p>\r\n    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>\r\n  </div>\r\n</div>");
 
 
 	templateBuilder.Append("\r\n<!--/Footer-->\r\n</body>\r\n</html>\r\n");

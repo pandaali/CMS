@@ -119,11 +119,12 @@ body{ text-align:center; background:#fff; *position:relative; }
 	.header-wrap .right-box .doshare{ margin-left:10px; width:80px;height:32px;}
 	.header-wrap .right-box .doshare a{ font-size:18px; margin:0 2px; border-radius:3px; color:#fff; background:#104C99; }
 	.header-wrap .right-box li.line{ margin-left:10px; background:url(../images/line-1.png) no-repeat 0 center; }
-	.header-wrap .right-box li.line a{ margin:0 10px; }
+	.header-wrap .right-box li.line a{ margin:0 10px; display:inline-block; color:#fff; font-size:12px; height:28px; line-height:28px; }
 	.header-wrap .right-box li em{ float:left; display:inline-block; margin:7px 8px auto auto; width:17px; height:15px; }
 	.header-wrap .right-box li.login em{ background:url(../images/user.png) left center no-repeat; }
 	.header-wrap .right-box li.login a{ display:inline-block; color:#fff; font-size:12px; height:28px; line-height:28px; }
 
+	.header-wrap .right-box li.contact a{ display:inline-block; color:#fff; font-size:12px; height:28px; line-height:28px; }
 /*内容样式
 ----------------------------------------------*/
 /*幻灯片样式*/

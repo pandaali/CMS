@@ -108,6 +108,23 @@ function jsprint(msgtitle, url, callback) {
         callback();
     }
 }
+//可以自动关闭的提示，基于artdialog插件，供web前台调用
+function mainjsprint(msgtitle, url, callback) {
+    var d = dialog({ content: msgtitle }).show();
+    setTimeout(function () {
+        d.close().remove();
+    }, 2000);
+    if (url == "back") {
+        window.history.back(-1);
+    } else if (url != "") {
+        window.location.href = url;
+    }
+    //执行回调函数
+    if (arguments.length == 3) {
+        callback();
+    }
+}
+
 //弹出一个Dialog窗口
 function jsdialog(msgtitle, msgcontent, url, callback) {
     var d = dialog({
@@ -313,7 +330,7 @@ $.fn.ruleSingleCheckbox = function () {
         //绑定反监听事件
         checkObj.on('click', function () {
             if ($(this).prop("checked") == true && !newObj.hasClass("selected")) {
-                alert();
+                //alert();
                 newObj.addClass("selected");
             } else if ($(this).prop("checked") == false && newObj.hasClass("selected")) {
                 newObj.removeClass("selected");
@@ -406,7 +423,17 @@ $.fn.ruleMultiRadio = function() {
 			var indexNum = parentObj.find('input[type="radio"]').index(this); //当前索引
 			var newObj = $('<a href="javascript:;">' + parentObj.find('label').eq(indexNum).text() + '</a>').appendTo(divObj); //查找对应Label创建选项
 			if($(this).prop("checked") == true){
-				newObj.addClass("selected"); //默认选中
+			    newObj.addClass("selected"); //默认选中
+
+			    //设置默认选中的id
+			    selectChannelID = $(this).attr("channelid");
+			    if (selectChannelID != null) {
+			        newObj.attr("channelid", selectChannelID);
+			    }
+			    selectCategoryID = $(this).attr("categoryid");
+			    if (selectCategoryID != null) {
+			        newObj.attr("categoryid", selectCategoryID);
+			    }
 			}
 			//检查控件是否启用
 			if($(this).prop("disabled") == true){
@@ -417,10 +444,30 @@ $.fn.ruleMultiRadio = function() {
 			$(newObj).click(function(){
 				$(this).siblings().removeClass("selected");
 				$(this).addClass("selected");
+
 				parentObj.find('input[type="radio"]').prop("checked",false);
 				parentObj.find('input[type="radio"]').eq(indexNum).prop("checked",true);
 				parentObj.find('input[type="radio"]').eq(indexNum).trigger("click"); //触发对应的radio的click事件
-				//alert(parentObj.find('input[type="radio"]').eq(indexNum).prop("checked"));
+
+
+
+                //加载频道下的分类
+				selectChannelName = parentObj.find('input[type="radio"]').eq(indexNum).attr("channelName");
+				if (selectChannelName != undefined && selectChannelName.indexOf("rekuu") != -1) {
+				    loadCategoryByChannel(selectChannelName);
+				}
+
+			    //设置选中的id
+				selectChannelID = parentObj.find('input[type="radio"]').eq(indexNum).attr("channelid");
+				if (selectChannelID != null) {
+				    $(this).siblings().removeAttr("channelid");
+				    $(this).attr("channelid", selectChannelID);
+				}
+				selectCategoryID = parentObj.find('input[type="radio"]').eq(indexNum).attr("categoryid");
+				if (selectCategoryID != null) {
+				    $(this).siblings().removeAttr("categoryid");
+				    $(this).attr("categoryid", selectCategoryID);
+				}
 			});
 		});
 	};

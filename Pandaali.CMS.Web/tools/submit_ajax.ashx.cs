@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.SessionState;
 using Pandaali.CMS.Web.UI;
 using Pandaali.CMS.Common;
+using System.Web.UI.WebControls;
 
 namespace Pandaali.CMS.Web.tools
 {
@@ -24,8 +25,14 @@ namespace Pandaali.CMS.Web.tools
 
             switch (action)
             {
-                case "default_list"://获取首页列表下一页内容
+                case "default_list"://获取首页列表下一页内容saveshare
                     default_list(context);
+                    break;
+                case "saveshare"://保存分享内容
+                    saveshare(context);
+                    break;
+                case "loadCategoryByChannel"://根据频道加载分类
+                    loadCategoryByChannel(context);
                     break;
                 case "comment_add": //提交评论
                     comment_add(context);
@@ -129,7 +136,7 @@ namespace Pandaali.CMS.Web.tools
             }
         }
 
-        #region 提交评论的处理方法===========================
+        #region 分批获取首页列表的处理方法===========================
         private void default_list(HttpContext context)
         {
             StringBuilder strTxt = new StringBuilder();
@@ -165,6 +172,240 @@ namespace Pandaali.CMS.Web.tools
                 }
             }
         }
+        #endregion
+
+        #region 提交分享内容的处理方法===========================
+        private void saveshare(HttpContext context)
+        {
+            string title = DTRequest.GetFormString("title");
+            int channel_id = DTRequest.GetFormInt("channelID");
+            int category_id = DTRequest.GetFormInt("categoryID");
+            string txtContent = DTRequest.GetFormString("txtContent");
+            string call_index = "";
+            string link_url = "";
+            string img_url = "";
+            string seo_title = "";
+            string seo_keywords = "";
+            string seo_description = "";
+            int sort_id = 99;
+
+            bool result = false;
+            Model.article model = new Model.article();
+            BLL.article bll = new BLL.article();
+
+            model.channel_id = channel_id;
+            model.category_id = category_id;
+            model.call_index = call_index;
+            model.title = title;
+            model.link_url = link_url;
+            model.img_url = img_url;
+            model.seo_title = seo_title;
+            model.seo_keywords = seo_keywords;
+            model.seo_description = seo_description;
+            //内容摘要提取内容前255个字符
+            model.zhaiyao = Utils.DropHTML(txtContent, 255);
+            model.content = txtContent;
+            model.sort_id = sort_id;
+            model.click = 0;
+            model.status = 0;
+            model.is_msg = 0;
+            model.is_top = 0;
+            model.is_red = 0;
+            model.is_hot = 0;
+            model.is_slide = 0;
+            model.is_sys = 0; //管理员发布
+            model.user_name = new BasePage().GetUserInfo().user_name; //获得当前登录用户名
+            model.add_time = DateTime.Now;
+            model.fields = new Dictionary<string, string>();//SetFieldValues(channel_id); //扩展字段赋值
+
+            #region 保存相册====================
+            //检查是否有自定义图片
+            //if (txtImgUrl.Text.Trim() == "")
+            //{
+            //    model.img_url = hidFocusPhoto.Value;
+            //}
+            //string[] albumArr = Request.Form.GetValues("hid_photo_name");
+            //string[] remarkArr = Request.Form.GetValues("hid_photo_remark");
+            //if (albumArr != null && albumArr.Length > 0)
+            //{
+            //    List<Model.article_albums> ls = new List<Model.article_albums>();
+            //    for (int i = 0; i < albumArr.Length; i++)
+            //    {
+            //        string[] imgArr = albumArr[i].Split('|');
+            //        if (imgArr.Length == 3)
+            //        {
+            //            if (!string.IsNullOrEmpty(remarkArr[i]))
+            //            {
+            //                ls.Add(new Model.article_albums { original_path = imgArr[1], thumb_path = imgArr[2], remark = remarkArr[i] });
+            //            }
+            //            else
+            //            {
+            //                ls.Add(new Model.article_albums { original_path = imgArr[1], thumb_path = imgArr[2] });
+            //            }
+            //        }
+            //    }
+            //    model.albums = ls;
+            //}
+            #endregion
+
+            #region 保存附件====================
+            ////保存附件
+            //string[] attachFileNameArr = Request.Form.GetValues("hid_attach_filename");
+            //string[] attachFilePathArr = Request.Form.GetValues("hid_attach_filepath");
+            //string[] attachFileSizeArr = Request.Form.GetValues("hid_attach_filesize");
+            //string[] attachPointArr = Request.Form.GetValues("txt_attach_point");
+            //if (attachFileNameArr != null && attachFilePathArr != null && attachFileSizeArr != null && attachPointArr != null
+            //    && attachFileNameArr.Length > 0 && attachFilePathArr.Length > 0 && attachFileSizeArr.Length > 0 && attachPointArr.Length > 0)
+            //{
+            //    List<Model.article_attach> ls = new List<Model.article_attach>();
+            //    for (int i = 0; i < attachFileNameArr.Length; i++)
+            //    {
+            //        int fileSize = Utils.StrToInt(attachFileSizeArr[i], 0);
+            //        string fileExt = Utils.GetFileExt(attachFilePathArr[i]);
+            //        int _point = Utils.StrToInt(attachPointArr[i], 0);
+            //        ls.Add(new Model.article_attach { file_name = attachFileNameArr[i], file_path = attachFilePathArr[i], file_size = fileSize, file_ext = fileExt, point = _point });
+            //    }
+            //    model.attach = ls;
+            //}
+            #endregion
+
+            #region 保存会员组价格==============
+            //List<Model.user_group_price> priceList = new List<Model.user_group_price>();
+            //for (int i = 0; i < rptPrice.Items.Count; i++)
+            //{
+            //    int _groupid = Convert.ToInt32(((HiddenField)rptPrice.Items[i].FindControl("hideGroupId")).Value);
+            //    decimal _price = Convert.ToDecimal(((TextBox)rptPrice.Items[i].FindControl("txtGroupPrice")).Text.Trim());
+            //    priceList.Add(new Model.user_group_price { group_id = _groupid, price = _price });
+            //}
+            //model.group_price = priceList;
+            #endregion
+
+            if (bll.Add(model) > 0)
+            {
+                result = true;
+            }
+            context.Response.Write(result);
+        }
+
+        #endregion
+
+        #region 扩展字段赋值=============================
+        //private Dictionary<string, string> SetFieldValues(int _channel_id)
+        //{
+        //    DataTable dt = new BLL.article_attribute_field().GetList(_channel_id, "").Tables[0];
+        //    Dictionary<string, string> dic = new Dictionary<string, string>();
+        //    foreach (DataRow dr in dt.Rows)
+        //    {
+        //        //查找相应的控件
+        //        switch (dr["control_type"].ToString())
+        //        {
+        //            case "single-text": //单行文本
+        //                TextBox txtControl = FindControl("field_control_" + dr["name"].ToString()) as TextBox;
+        //                if (txtControl != null)
+        //                {
+        //                    dic.Add(dr["name"].ToString(), txtControl.Text.Trim());
+
+        //                }
+        //                break;
+        //            case "multi-text": //多行文本
+        //                goto case "single-text";
+        //            case "editor": //编辑器
+        //                HtmlTextArea htmlTextAreaControl = FindControl("field_control_" + dr["name"].ToString()) as HtmlTextArea;
+        //                if (htmlTextAreaControl != null)
+        //                {
+        //                    dic.Add(dr["name"].ToString(), htmlTextAreaControl.Value);
+        //                }
+        //                break;
+        //            case "images": //图片上传
+        //                goto case "single-text";
+        //            case "video": //视频上传
+        //                goto case "single-text";
+        //            case "number": //数字
+        //                goto case "single-text";
+        //            case "checkbox": //复选框
+        //                CheckBox cbControl = FindControl("field_control_" + dr["name"].ToString()) as CheckBox;
+        //                if (cbControl != null)
+        //                {
+        //                    if (cbControl.Checked == true)
+        //                    {
+        //                        dic.Add(dr["name"].ToString(), "1");
+        //                    }
+        //                    else
+        //                    {
+        //                        dic.Add(dr["name"].ToString(), "0");
+        //                    }
+        //                }
+        //                break;
+        //            case "multi-radio": //多项单选
+        //                RadioButtonList rblControl = FindControl("field_control_" + dr["name"].ToString()) as RadioButtonList;
+        //                if (rblControl != null)
+        //                {
+        //                    dic.Add(dr["name"].ToString(), rblControl.SelectedValue);
+        //                }
+        //                break;
+        //            case "multi-checkbox": //多项多选
+        //                CheckBoxList cblControl = FindControl("field_control_" + dr["name"].ToString()) as CheckBoxList;
+        //                if (cblControl != null)
+        //                {
+        //                    StringBuilder tempStr = new StringBuilder();
+        //                    for (int i = 0; i < cblControl.Items.Count; i++)
+        //                    {
+        //                        if (cblControl.Items[i].Selected)
+        //                        {
+        //                            tempStr.Append(cblControl.Items[i].Value.Replace(',', '，') + ",");
+        //                        }
+        //                    }
+        //                    dic.Add(dr["name"].ToString(), Utils.DelLastComma(tempStr.ToString()));
+        //                }
+        //                break;
+        //        }
+        //    }
+        //    return dic;
+        //}
+        #endregion
+
+        #region 获取频道下的分类方法===========================
+        private void loadCategoryByChannel(HttpContext context)
+        {
+            StringBuilder strTxt = new StringBuilder();
+            string channel_name = DTRequest.GetFormString("channel_name");
+
+            DataTable dt = new DataTable();
+            if (!string.IsNullOrEmpty(channel_name))
+            {
+                dt = new BLL.article_category().GetList(0, channel_name);
+                //如果记录存在
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row0 = dt.Rows[0];
+                    strTxt.Append("<div class=\"boxwrap\">");
+
+                    strTxt.Append("<a href=\"javascript:;\" class=\"selected\">" + row0["title"].ToString() + "</a>");
+
+                    for (int pos = 1; pos < dt.Rows.Count; pos++)
+                    {
+                        DataRow row = dt.Rows[pos];
+                        strTxt.Append("<a href=\"javascript:;\" class=\"\">" + row["title"].ToString() + "</a>");
+                    }
+                    strTxt.Append("</div>");
+
+                    strTxt.Append("<span id=\"rblStatus\" style=\"display: none;\">");
+                    strTxt.Append("<input id=\"rblStatus_0\" type=\"radio\" categoryID=\"" + row0["id"].ToString() + "\" name=\"rblStatus\" value=\"0\" checked=\"checked\" />");
+                    strTxt.Append("<label for=\"rblStatus_0\">" + row0["title"].ToString() + "</label>");
+                    for (int pos = 1; pos < dt.Rows.Count; pos++)
+                    {
+                        DataRow row = dt.Rows[pos];
+                        strTxt.Append("<input id=\"rblStatus_0\" type=\"radio\" categoryID=\"" + row["id"].ToString() + "\" name=\"rblStatus\" value=\"1\" checked=\"checked\" />");
+                        strTxt.Append("<label for=\"rblStatus_" + pos + "\">" + row["title"].ToString() + "</label>");
+                    }
+
+                    strTxt.Append("<script>$(\"#loadCategoryByChannel\").ruleMultiRadio();</script>");
+                }
+            }
+
+            context.Response.Write(strTxt.ToString());
+        }
+    
         #endregion
 
         #region 提交评论的处理方法===========================

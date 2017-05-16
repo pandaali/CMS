@@ -111,7 +111,7 @@
                         timeout: 20000,
                         success: function (data, textStatus) {
                             if (data.status == 1) {
-                                $("#doshare").prepend('<a class="doshare blue" href="{config.webpath}aspx/plugin/article_share.aspx">我要分享</a>');
+                                $("#doshare").prepend('<a class="doshare blue" href="<%linkurl("article_share")%>">我要分享</a>');
                             } else {
                                 $("#doshare").prepend('<a class="doshare blue" href="<%linkurl("login")%>">我要分享</a>');
                             }

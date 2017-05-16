@@ -191,6 +191,7 @@
     <Content Include="aspx\js\layindex.js" />
     <Content Include="aspx\js\laymain.js" />
     <Content Include="aspx\js\uploader.js" />
+    <Content Include="aspx\main\article_share.aspx" />
     <Content Include="aspx\main\cart.aspx" />
     <Content Include="aspx\main\content.aspx" />
     <Content Include="aspx\main\Default.aspx" />
@@ -519,6 +520,7 @@
     <Content Include="templates\main\css\flexslider.css" />
     <Content Include="templates\main\css\lightbox.css" />
     <Content Include="templates\main\css\style.css" />
+    <Content Include="templates\main\css\style1.css" />
     <Content Include="templates\main\css\wx_wz.css" />
     <Content Include="templates\main\down.html" />
     <Content Include="templates\main\down_list.html" />
@@ -549,7 +551,7 @@
     <Content Include="templates\main\images\WePayLogo.png" />
     <Content Include="templates\main\Default.html" />
     <Content Include="templates\main\index.html" />
-    <Content Include="templates\main\index20170413.html" />
+    <Content Include="templates\main\article_share.html" />
     <Content Include="templates\main\js\avatar.js" />
     <Content Include="templates\main\js\cart.js" />
     <Content Include="templates\main\js\common.js" />

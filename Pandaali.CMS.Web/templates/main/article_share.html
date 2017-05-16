@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{site.seo_title}</title>
+<meta name="keywords" content="{site.seo_keyword}" />
+<meta name="description" content="{site.seo_description}" />
+
+<link href="{config.webpath}scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link href="<%templateskin%>/css/style1.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/datepicker/WdatePicker.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}scripts/webuploader/webuploader.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}editor/kindeditor-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}admin/js/uploader.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}admin/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="{config.webpath}admin/js/common.js"></script>
+<!--<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/jquery.flexslider-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%templateskin%>/js/common.js"></script>-->
+
+    <script type="text/javascript">
+        var editor;
+
+        $(function () {
+            //初始化表单验证
+            $(".tab-content").initValidform();
+
+            //初始化上传控件
+            $(".upload-img").InitUploader({ sendurl: "../../tools/upload_ajax.ashx", swf: "../../scripts/webuploader/uploader.swf" });
+            //初始化编辑器
+            editor = KindEditor.create('.editor', {
+                width: '100%',
+                height: '350px',
+                resizeType: 1,
+                uploadJson: '../../tools/upload_ajax.ashx?action=EditorFile&IsWater=1',
+                fileManagerJson: '../../tools/upload_ajax.ashx?action=ManagerFile',
+                allowFileManager: true
+            });
+            var editorMini = KindEditor.create('.editor-mini', {
+                width: '100%',
+                height: '250px',
+                resizeType: 1,
+                uploadJson: '../../tools/upload_ajax.ashx?action=EditorFile&IsWater=1',
+                items: [
+                    'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'emoticons', 'image', 'link']
+            });
+        });
+
+        function loadCategoryByChannel(selectChannel) {
+            $.ajax({
+                url: '{config.webpath}tools/submit_ajax.ashx?action=loadCategoryByChannel',
+                type: 'POST',
+                data: { "channel_name": selectChannel },
+                dataType: 'html',
+                beforeSend: function () { },
+                success: function (data, textStatus) {
+                    if (data) {
+                        $("#loadCategoryByChannel").html(data);
+
+                    } else {
+                        $("#loadCategoryByChannel").html("");
+                        return false;
+                    }
+                }
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+<!--Header-->
+<%template src="_header.html"%>
+<!--/Header-->
+        <div class="maincontent">
+            <div class="tab-content" style="display: block;">
+                <dl>
+                    <dt>选择频道</dt>
+                    <dd>
+                        <div class="rule-multi-radio multi-radio">
+                            <div class="boxwrap">
+                                <%set DataTable rekuuchannelList=get_channel_list()%>
+                                <%loop ncdr3 rekuuchannelList%>
+                                <%if(ncdr3__loop__id==1)%>
+                                <a href="javascript:;" class="selected"> {ncdr3[title]}</a>
+                                <%else%>
+                                <a href="javascript:;" class=""> {ncdr3[title]}</a>
+                                <%/if%>
+                                <%/loop%>
+                            </div>
+                            <span id="rblStatus" style="display: none;">
+                                <%set DataTable rekuuchannelList1=get_channel_list()%>
+                                <%loop ncdr4 rekuuchannelList1%>
+                                <%if(ncdr4__loop__id==1)%>
+                                <input id="rblStatus1_0" type="radio" name="rblStatus1" channelID="{ncdr4[id]}" channelName="{ncdr4[name]}" value="0" checked="checked" />
+                                <label for="rblStatus1_0">{ncdr4[title]}</label>
+                                <%else%>
+                                <input id="rblStatus1_<%ncdr4__loop__id -1%>" type="radio" channelID="{ncdr4[id]}" channelName="{ncdr4[name]}" name="rblStatus1" value="1" />
+                                <label for="rblStatus1_<%ncdr4__loop__id -1%>">{ncdr4[title]}</label>
+                                <%/if%>
+                                <%/loop%>
+                            </span>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>类别</dt>
+                    <dd>
+                        <div class="rule-multi-radio multi-radio" id="loadCategoryByChannel">
+                            <div class="boxwrap">
+                                <%set DataTable rekuushareList=get_category_child_list("rekuushare",0)%>
+                                <%loop ncdr rekuushareList%>
+                                <%if(ncdr__loop__id==1)%>
+                                <a href="javascript:;" class="selected"> {ncdr[title]}</a>
+                                <%else%>
+                                <a href="javascript:;" class=""> {ncdr[title]}</a>
+                                <%/if%>
+                                <%/loop%>
+                            </div>
+                            <span id="rblStatus" style="display: none;">
+                                <%set DataTable rekuushareList1=get_category_child_list("rekuushare",0)%>
+                                <%loop ncdr1 rekuushareList1%>
+                                <%if(ncdr1__loop__id==1)%>
+                                <input id="rblStatus_0" type="radio" categoryID="{ncdr1[id]}" name="rblStatus" value="0" checked="checked" />
+                                <label for="rblStatus_0">{ncdr1[title]}</label>
+                                <%else%>
+                                <input id="rblStatus_<%ncdr1__loop__id -1%>" categoryID="{ncdr1[id]}" type="radio" name="rblStatus" value="1" />
+                                <label for="rblStatus_<%ncdr1__loop__id -1%>">{ncdr1[title]}</label>
+                                <%/if%>
+                                <%/loop%>
+                            </span>
+                        </div>
+                    </dd>
+                </dl>
+                <!--<dl>
+                    <dt>推荐类型</dt>
+                    <dd>
+                        <div class="rule-multi-checkbox multi-checkbox">
+                            <div class="boxwrap"><a href="javascript:;" class="selected">允许评论</a><a href="javascript:;" class="">置顶</a><a href="javascript:;" class="">推荐</a><a href="javascript:;" class="">热门</a><a href="javascript:;" class="">幻灯片</a></div>
+                            <span id="cblItem" style="display: none;"><input id="cblItem_0" type="checkbox" name="cblItem$0" value="1" /><label for="cblItem_0">允许评论</label><input id="cblItem_1" type="checkbox" name="cblItem$1" value="1" /><label for="cblItem_1">置顶</label><input id="cblItem_2" type="checkbox" name="cblItem$2" value="1" /><label for="cblItem_2">推荐</label><input id="cblItem_3" type="checkbox" name="cblItem$3" value="1" /><label for="cblItem_3">热门</label><input id="cblItem_4" type="checkbox" name="cblItem$4" value="1" /><label for="cblItem_4">幻灯片</label></span>
+                        </div>
+                    </dd>
+                </dl>-->
+                <dl>
+                    <dt>内容标题</dt>
+                    <dd>
+                        <input name="txtTitle" type="text" id="txtTitle" class="input normal" datatype="*2-100" sucmsg=" " />
+                        <span class="Validform_checktip">*标题最多100个字符</span>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>内容描述</dt>
+                    <dd>
+                        <textarea name="txtContent" id="txtContent" class="editor" style="visibility:hidden;"></textarea>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+        <!--工具栏-->
+        <div class="page-footer">
+            <div class="btn-wrap">
+                <input name="btnSubmit" type="submit" value="提  交" id="btnSubmit" class="btn" onclick="saveshare()" />
+                <input name="btnReturn" type="button" value="返  回" class="btn yellow" onclick="window.location.href = '{config.webpath}Default.html';" />
+                <script>
+                    function saveshare() {
+                        if ($(".tab-content").Validform().check()) {
+                            if (editor.html() == "") {
+                                parent.jsprint("请认真填写要分享的内容！", "");
+                                return false;
+                            }
+                            var channelID = 0;
+                            var categoryID = 0;
+
+                            $(".boxwrap").find('a[class="selected"]').each(function (i) {
+                                if ($(this).attr("channelid") != undefined) {
+                                    channelID = $(this).attr("channelid");
+                                }
+                                if ($(this).attr("categoryid") != undefined) {
+                                    categoryID = $(this).attr("categoryid");
+                                }
+                            });
+
+
+                            $.ajax({
+                                url: '{config.webpath}tools/submit_ajax.ashx?action=saveshare',
+                                type: 'POST',
+                                data: { "title": $("#txtTitle").val(), "channelID": channelID, "categoryID": categoryID, "txtContent": editor.html() },
+                                dataType: 'html',
+                                beforeSend: function () { },
+                                success: function (data, textStatus) {
+
+                                    if (data == "True") {
+                                        parent.mainjsprint("分享成功！", "/Default.html");
+                                        window.location.href = "/Default.html";
+                                    } else {
+                                        parent.mainjsprint("分享失败！", "");
+                                        return false;
+                                    }
+                                }
+                            });
+                        }
+                    }
+                </script>
+            </div>
+        </div>
+        <!--/工具栏-->
+        <!--Footer-->
+        <%template src="_footer.html"%>
+        <!--/Footer-->
+</body>
+</html>
