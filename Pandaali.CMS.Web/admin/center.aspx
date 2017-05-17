@@ -52,7 +52,7 @@
     <li>服务器端口：<%=Request.ServerVariables["SERVER_PORT"]%></li>
     <li>目录物理路径：<%=Request.ServerVariables["APPL_PHYSICAL_PATH"]%></li>
     <li>系统版本：V<%=Utils.GetVersion()%></li>
-    <li>升级通知：<asp:Literal ID="LitUpgrade" runat="server"/></li>
+    <%--<li>升级通知：<asp:Literal ID="LitUpgrade" runat="server"/></li>--%>
   </ul>
 </div>
 <div class="line20"></div>
@@ -70,7 +70,7 @@
   </ul>
 </div>
 
-<div class="nlist-4">
+<%--<div class="nlist-4">
   <h3><i class="site"></i>建站三步曲</h3>
   <ul>
     <li>1、进入后台管理中心，点击“系统设置”修改网站配置信息；</li>
@@ -81,7 +81,7 @@
   <ul>
     <asp:Literal ID="LitNotice" runat="server"/>
   </ul>
-</div>
+</div>--%>
 <!--/内容-->
 
 </form>

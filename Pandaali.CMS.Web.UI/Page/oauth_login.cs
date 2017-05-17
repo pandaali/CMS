@@ -53,8 +53,8 @@ namespace Pandaali.CMS.Web.UI.Page
                 //记住登录状态，防止Session提前过期
                 HttpContext.Current.Session[DTKeys.SESSION_USER_INFO] = model;
                 HttpContext.Current.Session.Timeout = 45;
-                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name);
-                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "Pandaali", model.user_name);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "Pandaali", model.password);
                 //更新最新的Access Token
                 oauthModel.oauth_access_token = HttpContext.Current.Session["oauth_access_token"].ToString();
                 new BLL.user_oauth().Update(oauthModel);

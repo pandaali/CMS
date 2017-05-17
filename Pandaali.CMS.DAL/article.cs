@@ -1095,7 +1095,20 @@ namespace Pandaali.CMS.DAL
                 strSql.Append(" and " + strWhere);
             }
             recordCount = Convert.ToInt32(DbHelperSQL.GetSingle(PagingHelper.CreateCountingSql(strSql.ToString())));
-            return DbHelperSQL.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));
+
+            //计算总页数
+            pageSize = pageSize == 0 ? recordCount : pageSize;
+            int pageCount = (recordCount + pageSize - 1) / pageSize;
+            if (pageIndex > pageCount)
+            {
+                DataSet ds = new DataSet();
+                ds.Tables.Add(new DataTable());
+                return ds;
+            }
+            else
+            {
+                return DbHelperSQL.Query(PagingHelper.CreatePagingSql(recordCount, pageSize, pageIndex, strSql.ToString(), filedOrder));
+            }
         }
 
         /// <summary>

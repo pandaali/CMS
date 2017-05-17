@@ -10,11 +10,11 @@ namespace Pandaali.CMS.Common
         /// <summary>
         /// 版本号全称
         /// </summary>
-        public const string ASSEMBLY_VERSION = "4.0.0";
+        public const string ASSEMBLY_VERSION = "1.0.0";
         /// <summary>
         /// 版本年号
         /// </summary>
-        public const string ASSEMBLY_YEAR = "2015";
+        public const string ASSEMBLY_YEAR = "2017";
         //File======================================================
         /// <summary>
         /// 插件配制文件名
@@ -39,11 +39,11 @@ namespace Pandaali.CMS.Common
         /// <summary>
         /// 升级代码
         /// </summary>
-        public const string FILE_URL_UPGRADE_CODE = "267C2643EE401DD2F0A06084F7931C4DEC76E7CAA1996481FE8F5081A8936409058D07A6F5E2941C";
+        public const string FILE_URL_UPGRADE_CODE = "746B09FEE58D2F48F6F26CCEF70685D3CE66E55686819CD076C0CD91FBC93E7AB017E25D5B3EBD25";
         /// <summary>
         /// 消息代码
         /// </summary>
-        public const string FILE_URL_NOTICE_CODE = "267C2643EE401DD2F0A06084F7931C4DEC76E7CAA1996481FE8F5081A8936409D037BEA6A623A0A1";
+        public const string FILE_URL_NOTICE_CODE = "746B09FEE58D2F48F6F26CCEF70685D3CE66E55686819CD076C0CD91FBC93E7A5CAAD00C93E69FA5";
 
         //Directory==================================================
         /// <summary>

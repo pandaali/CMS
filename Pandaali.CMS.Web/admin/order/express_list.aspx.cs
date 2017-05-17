@@ -64,7 +64,7 @@ namespace Pandaali.CMS.Web.admin.order
         private int GetPageSize(int _default_size)
         {
             int _pagesize;
-            if (int.TryParse(Utils.GetCookie("express_page_size", "DTcmsPage"), out _pagesize))
+            if (int.TryParse(Utils.GetCookie("express_page_size", "PandaaliPage"), out _pagesize))
             {
                 if (_pagesize > 0)
                 {
@@ -89,7 +89,7 @@ namespace Pandaali.CMS.Web.admin.order
             {
                 if (_pagesize > 0)
                 {
-                    Utils.WriteCookie("express_page_size", "DTcmsPage", _pagesize.ToString(), 14400);
+                    Utils.WriteCookie("express_page_size", "PandaaliPage", _pagesize.ToString(), 14400);
                 }
             }
             Response.Redirect(Utils.CombUrlTxt("express_list.aspx", "keywords={0}", this.keywords));

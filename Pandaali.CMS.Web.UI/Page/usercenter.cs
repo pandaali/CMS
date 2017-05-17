@@ -46,10 +46,10 @@ namespace Pandaali.CMS.Web.UI.Page
                 //清险Session
                 HttpContext.Current.Session[DTKeys.SESSION_USER_INFO] = null;
                 //清除Cookies
-                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", -43200);
-                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", -43200);
-                Utils.WriteCookie("UserName", "DTcms", -1);
-                Utils.WriteCookie("Password", "DTcms", -1);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "Pandaali", -43200);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "Pandaali", -43200);
+                Utils.WriteCookie("UserName", "Pandaali", -1);
+                Utils.WriteCookie("Password", "Pandaali", -1);
                 //自动登录,跳转URL
                 HttpContext.Current.Response.Redirect(linkurl("login"));
             }

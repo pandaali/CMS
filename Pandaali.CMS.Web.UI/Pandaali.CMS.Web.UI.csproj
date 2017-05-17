@@ -99,10 +99,13 @@
     <Compile Include="Page\category.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Page\resurces.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Page\error.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Page\Default.cs">
+    <Compile Include="Page\home.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Page\index.cs">

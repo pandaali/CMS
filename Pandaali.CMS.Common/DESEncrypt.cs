@@ -19,7 +19,7 @@ namespace Pandaali.CMS.Common
         /// <returns></returns>
         public static string Encrypt(string Text)
         {
-            return Encrypt(Text, "DTcms");
+            return Encrypt(Text, "Pandaali");
         }
         /// <summary> 
         /// 加密数据 
@@ -57,7 +57,7 @@ namespace Pandaali.CMS.Common
         /// <returns></returns>
         public static string Decrypt(string Text)
         {
-            return Decrypt(Text, "DTcms");
+            return Decrypt(Text, "Pandaali");
         }
         /// <summary> 
         /// 解密数据 

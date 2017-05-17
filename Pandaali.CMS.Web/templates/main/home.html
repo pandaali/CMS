@@ -31,54 +31,54 @@
         <div class="wx_left">
             <ul style="height:880px;overflow:hidden;">
                 <!--类别-->
-                <%set DataTable rekuushareList=get_category_child_list("rekuushare",0)%>
-                <%loop ncdr rekuushareList%>
-                <%if(ncdr__loop__id==1)%>
                 <li class="active">
-                    <a href="<%linkurl("windows_list",{ncdr[id]})%>"> {ncdr[title]}</a>
+                    <a href="{config.webpath}home.html">最新</a>
                 </li>
-                <%else%>
+                <%set DataTable rekuushareList=get_category_child_list("rekuushare",0)%>
+                <%foreach(DataRow dr in rekuushareList.Rows)%>
                 <li>
-                    <a href="<%linkurl("windows_list",{ncdr[id]})%>"> {ncdr[title]}</a>
+                    <a href="<%linkurl("home",{dr[id]})%>"> {dr[title]}</a>
                 </li>
-                <%/if%>
-                <%/loop%>
+                <%/foreach%>
                 <!--/类别-->
             </ul>
         </div>
         <!-- #left end -->
         <div class="wx_center">
             <ul id="showajaxnews">
-                <%set DataTable newsList=get_article_list("down", 0, 20, "status=0")%>
-                <%foreach(DataRow dr in newsList.Rows)%>
-                <li>
-                    <a href="" class="wximg" target="_blank"><img src="http://open.weixin.qq.com/qr/code/?username=cctvyscj" border="0" /></a>
-                    <a href="<%linkurl("news_show",{dr[id]})%>" target="_blank" class="wxright"><p class="wxname">央视财经<span>1小时前</span></p><p class="wxtitle">{dr[title]}</p></a>
-                </li>
-                <%/foreach%>
+
             </ul>
             <div id="go-more"><a id="loadmore">点击加载更多</a></div>
         </div>
         <script>
-            var i = 2; //设置当前页数
+            var i = 1; //设置当前页数
 
             $(function () {
                 $(window).scroll(function () {
                     if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-                        loadDefaultListNextPage();
+                        loadPageListByCategory();
                     }
                 });
 
                 $('#loadmore').click(function () {
-                    loadDefaultListNextPage();
+                    loadPageListByCategory();
                 });
+
+                loadPageListByCategory();
             });
 
-            function loadDefaultListNextPage() {
+            function loadPageListByCategory() {
+                var categoryid = 0;
+                var temp = window.location.pathname.replace(/[^0-9]/g, '');;
+                if (temp != '')
+                {
+                    categoryid = temp;
+                }
+
                 $.ajax({
-                    url: '{config.webpath}tools/submit_ajax.ashx?action=default_list',
+                    url: '{config.webpath}tools/submit_ajax.ashx?action=categorylist',
                     type: 'POST',
-                    data: { "channel_name": 'down', 'category_id': 0, 'page_size': 20, 'page_index': i, 'strwhere': 'status=0', 'orderby': 'sort_id asc,add_time desc' },
+                    data: { "channel_name": 'rekuushare', 'category_id': categoryid, 'page_size': 20, 'page_index': i, 'strwhere': 'status=0', 'orderby': 'sort_id asc,add_time desc' },
                     dataType: 'html',
                     beforeSend: function () {
                         $("#loadmore").show().html('正在努力加载中...');
@@ -121,10 +121,10 @@
             </div>
             <div class="wx_right_title">
                 <label></label>
-                <a href="<%linkurl("rekuutop")%>">热酷头条</a>
+                <a href="<%linkurl("rekuutop")%>">热酷专栏</a>
             </div>
             <div class="wx_right_list2">
-                <%set DataTable newsList3=get_article_list("down", 0, 8, "status=0")%>
+                <%set DataTable newsList3=get_article_list("down", 0, 5, "status=0")%>
                 <%foreach(DataRow dr in newsList3.Rows)%>
                 <li>
                     <a href="<%linkurl("news_show",{dr[id]})%>" target="_blank"><span><img src="http://www.we123.com/d/file/xcx/2017-05-11/a9860b28ac5a2fef9a5eeac786f99c80.png" border="0" /></span>{dr[title]}</a>

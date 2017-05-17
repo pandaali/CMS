@@ -194,7 +194,6 @@
     <Content Include="aspx\main\article_share.aspx" />
     <Content Include="aspx\main\cart.aspx" />
     <Content Include="aspx\main\content.aspx" />
-    <Content Include="aspx\main\Default.aspx" />
     <Content Include="aspx\main\down.aspx" />
     <Content Include="aspx\main\down_list.aspx" />
     <Content Include="aspx\main\down_show.aspx" />
@@ -202,6 +201,7 @@
     <Content Include="aspx\main\goods.aspx" />
     <Content Include="aspx\main\goods_list.aspx" />
     <Content Include="aspx\main\goods_show.aspx" />
+    <Content Include="aspx\main\home.aspx" />
     <Content Include="aspx\main\index.aspx" />
     <Content Include="aspx\main\login.aspx" />
     <Content Include="aspx\main\mac.aspx" />
@@ -217,7 +217,11 @@
     <Content Include="aspx\main\photo_show.aspx" />
     <Content Include="aspx\main\register.aspx" />
     <Content Include="aspx\main\repassword.aspx" />
+    <Content Include="aspx\main\resources.aspx" />
     <Content Include="aspx\main\search.aspx" />
+    <Content Include="aspx\main\share.aspx" />
+    <Content Include="aspx\main\share_list.aspx" />
+    <Content Include="aspx\main\share_show.aspx" />
     <Content Include="aspx\main\shopping.aspx" />
     <Content Include="aspx\main\useramount.aspx" />
     <Content Include="aspx\main\usercenter.aspx" />
@@ -466,8 +470,16 @@
     <Content Include="images\oauth\renren.png" />
     <Content Include="images\oauth\taobao.png" />
     <Content Include="images\oauth\weibo.png" />
-    <Content Include="Default.aspx" />
+    <Content Include="home.aspx" />
     <Content Include="index.aspx" />
+    <Content Include="plugins\feedback\admin\index.aspx" />
+    <Content Include="plugins\feedback\admin\reply.aspx" />
+    <Content Include="plugins\feedback\bin\DTcms.Web.Plugin.Feedback.dll" />
+    <Content Include="plugins\feedback\templet\feedback.html" />
+    <Content Include="plugins\link\admin\index.aspx" />
+    <Content Include="plugins\link\admin\link_edit.aspx" />
+    <Content Include="plugins\link\bin\DTcms.Web.Plugin.Link.dll" />
+    <Content Include="plugins\link\templet\link.html" />
     <Content Include="scripts\artdialog\dialog-min.js" />
     <Content Include="scripts\artdialog\dialog-plus-min.js" />
     <Content Include="scripts\artdialog\ui-dialog.css" />
@@ -522,6 +534,7 @@
     <Content Include="templates\main\css\style.css" />
     <Content Include="templates\main\css\style1.css" />
     <Content Include="templates\main\css\wx_wz.css" />
+    <Content Include="templates\main\resources.html" />
     <Content Include="templates\main\down.html" />
     <Content Include="templates\main\down_list.html" />
     <Content Include="templates\main\down_show.html" />
@@ -549,7 +562,7 @@
     <Content Include="templates\main\images\user-avatar.png" />
     <Content Include="templates\main\images\user.png" />
     <Content Include="templates\main\images\WePayLogo.png" />
-    <Content Include="templates\main\Default.html" />
+    <Content Include="templates\main\home.html" />
     <Content Include="templates\main\index.html" />
     <Content Include="templates\main\article_share.html" />
     <Content Include="templates\main\js\avatar.js" />
@@ -586,8 +599,11 @@
     <Content Include="templates\main\video.html" />
     <Content Include="templates\main\video_list.html" />
     <Content Include="templates\main\video_show.html" />
+    <Content Include="templates\main\share.html" />
     <Content Include="templates\main\windows.html" />
+    <Content Include="templates\main\share_list.html" />
     <Content Include="templates\main\windows_list.html" />
+    <Content Include="templates\main\share_show.html" />
     <Content Include="templates\main\windows_show.html" />
     <Content Include="templates\main\_comment_box.html" />
     <Content Include="templates\main\_footer.html" />
@@ -1414,7 +1430,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="html\" />
-    <Folder Include="plugins\" />
     <Folder Include="upload\201504\29\" />
   </ItemGroup>
   <ItemGroup>
@@ -1470,6 +1485,10 @@
     <Content Include="api\payment\wxpaypc\cert\apiclient_cert.p12" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="plugins\feedback\ajax.ashx" />
+    <Content Include="plugins\feedback\plugin.config" />
+    <Content Include="plugins\link\ajax.ashx" />
+    <Content Include="plugins\link\plugin.config" />
     <None Include="Properties\PublishProfiles\webconfig.pubxml" />
     <Content Include="upload\201504\18\201504182311117470.zip" />
     <Content Include="upload\201504\18\201504182322569933.zip" />

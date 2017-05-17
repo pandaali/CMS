@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2017/5/16 11:08:53.
-		本页面代码由DTcms模板引擎生成于 2017/5/16 11:08:53. 
+		This page was created by DTcms Template Engine at 2017/5/12 23:04:28.
+		本页面代码由DTcms模板引擎生成于 2017/5/12 23:04:28. 
 	*/
 
 	base.OnInit(e);
@@ -46,6 +46,9 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\">");
 	templateBuilder.Append(Utils.ObjectToStr(site.name));
 	templateBuilder.Append("</a>\r\n        <p class=\"nav\">\r\n          <a href=\"");
+	templateBuilder.Append(linkurl("rekuutop"));
+
+	templateBuilder.Append("\">热酷头条</a>\r\n          <a href=\"");
 	templateBuilder.Append(linkurl("rekuushare"));
 
 	templateBuilder.Append("\">知识分享</a>\r\n          <a href=\"");
@@ -72,7 +75,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("login"));
 
 	templateBuilder.Append("\">登录</a></li>');\r\n					}\r\n				}\r\n			});\r\n		</");
-	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li class=\"contact\"><a href=\"");
+	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li><a href=\"");
 	templateBuilder.Append(linkurl("content","contact"));
 
 	templateBuilder.Append("\">联系我们</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>");
@@ -121,15 +124,15 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("\r\n            </ul>\r\n            <div id=\"go-more\"><a id=\"loadmore\">点击加载更多</a></div>\r\n        </div>\r\n        <script>\r\n            var i = 2; //设置当前页数\r\n\r\n            $(function () {\r\n                $(window).scroll(function () {\r\n                    if ($(window).scrollTop() == $(document).height() - $(window).height()) {\r\n                        loadDefaultListNextPage();\r\n                    }\r\n                });\r\n\r\n                $('#loadmore').click(function () {\r\n                    loadDefaultListNextPage();\r\n                });\r\n            });\r\n\r\n            function loadDefaultListNextPage() {\r\n                $.ajax({\r\n                    url: '");
 	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
 	templateBuilder.Append("tools/submit_ajax.ashx?action=default_list',\r\n                    type: 'POST',\r\n                    data: { \"channel_name\": 'down', 'category_id': 0, 'page_size': 20, 'page_index': i, 'strwhere': 'status=0', 'orderby': 'sort_id asc,add_time desc' },\r\n                    dataType: 'html',\r\n                    beforeSend: function () {\r\n                        $(\"#loadmore\").show().html('正在努力加载中...');\r\n                        $('#loadmore').attr('disabled', 'disabled');\r\n                    },\r\n                    success: function (data, textStatus) {\r\n\r\n                        if (data) {\r\n                            $(\"#showajaxnews\").append(data);\r\n                            $(\"#loadmore\").removeAttr('disabled');\r\n                            $(\"#loadmore\").html('点击加载更多');\r\n                            i++;\r\n                        } else {\r\n                            $(\"#loadmore\").show().html(\"已全部加载完毕！\");\r\n                            $('#loadmore').attr('disabled', 'disabled');\r\n                            return false;\r\n                        }\r\n                    }\r\n                });\r\n            }\r\n        </");
-	templateBuilder.Append("script>\r\n        <!-- #center end -->\r\n        <div class=\"wx_right\">\r\n            <div id=\"doshare\">\r\n                <script type=\"text/javascript\">\r\n                    $.ajax({\r\n                        type: \"POST\",\r\n                        url: \"");
+	templateBuilder.Append("script>\r\n        <!-- #center end -->\r\n        <div class=\"wx_right\">\r\n            <div id=\"doshare\">\r\n\r\n                <script type=\"text/javascript\">\r\n			$.ajax({\r\n				type: \"POST\",\r\n				url: \"");
 	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
-	templateBuilder.Append("tools/submit_ajax.ashx?action=user_check_login\",\r\n                        dataType: \"json\",\r\n                        timeout: 20000,\r\n                        success: function (data, textStatus) {\r\n                            if (data.status == 1) {\r\n                                $(\"#doshare\").prepend('<a class=\"doshare blue\" href=\"");
-	templateBuilder.Append(linkurl("article_share"));
+	templateBuilder.Append("tools/submit_ajax.ashx?action=user_check_login\",\r\n				dataType: \"json\",\r\n				timeout: 20000,\r\n				success: function (data, textStatus) {\r\n				    if (data.status == 1) {\r\n				        $(\"#doshare\").prepend('<a class=\"doshare blue\" href=\"");
+	templateBuilder.Append(linkurl("article_share","index"));
 
-	templateBuilder.Append("\">我要分享</a>');\r\n                            } else {\r\n                                $(\"#doshare\").prepend('<a class=\"doshare blue\" href=\"");
+	templateBuilder.Append("\">我要分享</a>');\r\n					} else {\r\n				        $(\"#doshare\").prepend('<a class=\"doshare blue\" href=\"");
 	templateBuilder.Append(linkurl("login"));
 
-	templateBuilder.Append("\">我要分享</a>');\r\n                            }\r\n                        }\r\n                    });\r\n                </");
+	templateBuilder.Append("\">我要分享</a>');\r\n					}\r\n				}\r\n			});\r\n                </");
 	templateBuilder.Append("script>\r\n            </div>\r\n            <div class=\"wx_right_title\">\r\n                <label></label>\r\n                <a href=\"");
 	templateBuilder.Append(linkurl("rekuutop"));
 
@@ -204,8 +207,8 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("  版本号：");
 	templateBuilder.Append(Utils.GetVersion().ToString());
 
-	templateBuilder.Append("<script type=\"text/javascript\">var cnzz_protocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cspan id='cnzz_stat_icon_1261954413'%3E%3C/span%3E%3Cscript src='\" + cnzz_protocol + \"s4.cnzz.com/stat.php%3Fid%3D1261954413%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E\"));</");
-	templateBuilder.Append("script></p>\r\n    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>\r\n  </div>\r\n</div>");
+	templateBuilder.Append("</p>\r\n    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>\r\n    <p><script src=\"https://s11.cnzz.com/z_stat.php?id=1261718968&web_id=1261718968\" language=\"JavaScript\"></");
+	templateBuilder.Append("script></p>\r\n  </div>\r\n</div>");
 
 
 	templateBuilder.Append("\r\n    <!--/Footer-->\r\n</body>\r\n</html>");

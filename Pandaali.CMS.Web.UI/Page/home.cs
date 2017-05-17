@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Pandaali.CMS.Web.UI.Page
 {
-    public partial class Default : Web.UI.BasePage
+    public partial class home : Web.UI.BasePage
     {
         /// <summary>
         /// 重写虚方法,此方法将在Init事件前执行

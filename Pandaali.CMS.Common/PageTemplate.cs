@@ -151,8 +151,8 @@ namespace Pandaali.CMS.Common
                         "<%@ Import namespace=\"System.Data\" %>\r\n" +
                         "<%@ Import namespace=\"Pandaali.CMS.Common\" %>{1}\r\n\r\n" +
                         "<script runat=\"server\">\r\noverride protected void OnInit(EventArgs e)\r\n" +
-                        "{{\r\n\r\n\t/* \r\n\t\tThis page was created by DTcms Template Engine at {2}.\r\n\t\t" +
-                        "本页面代码由DTcms模板引擎生成于 {2}. \r\n\t*/\r\n\r\n\tbase.OnInit(e);\r\n\t" +
+                        "{{\r\n\r\n\t/* \r\n\t\tThis page was created by Pandaali Template Engine at {2}.\r\n\t\t" +
+                        "本页面代码由Pandaali模板引擎生成于 {2}. \r\n\t*/\r\n\r\n\tbase.OnInit(e);\r\n\t" +
                         "StringBuilder templateBuilder = new StringBuilder({3});{4}\r\n{5}\r\n\t" +
                         "Response.Write(templateBuilder.ToString());\r\n}}\r\n</script>\r\n", inherit, extNamespace.ToString(), DateTime.Now, strReturn.Capacity,
                         constStr.ToString(), Regex.Replace(strReturn.ToString(), @"\r\n\s*templateBuilder\.Append\(""""\);", ""));

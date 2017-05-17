@@ -200,8 +200,8 @@ namespace Pandaali.CMS.Web.UI
             else
             {
                 //检查Cookies
-                string username = Utils.GetCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms");
-                string password = Utils.GetCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms");
+                string username = Utils.GetCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "Pandaali");
+                string password = Utils.GetCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "Pandaali");
                 if (username != "" && password != "")
                 {
                     BLL.users bll = new BLL.users();

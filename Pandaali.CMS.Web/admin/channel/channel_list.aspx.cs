@@ -86,7 +86,7 @@ namespace Pandaali.CMS.Web.admin.channel
         private int GetPageSize(int _default_size)
         {
             int _pagesize;
-            if (int.TryParse(Utils.GetCookie("channel_page_size", "DTcmsPage"), out _pagesize))
+            if (int.TryParse(Utils.GetCookie("channel_page_size", "PandaaliPage"), out _pagesize))
             {
                 if (_pagesize > 0)
                 {
@@ -117,7 +117,7 @@ namespace Pandaali.CMS.Web.admin.channel
             {
                 if (_pagesize > 0)
                 {
-                    Utils.WriteCookie("channel_page_size", "DTcmsPage", _pagesize.ToString(), 14400);
+                    Utils.WriteCookie("channel_page_size", "PandaaliPage", _pagesize.ToString(), 14400);
                 }
             }
             Response.Redirect(Utils.CombUrlTxt("channel_list.aspx", "site_id={0}&keywords={1}", this.site_id.ToString(), this.keywords));

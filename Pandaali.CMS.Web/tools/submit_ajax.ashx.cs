@@ -25,8 +25,8 @@ namespace Pandaali.CMS.Web.tools
 
             switch (action)
             {
-                case "default_list"://获取首页列表下一页内容saveshare
-                    default_list(context);
+                case "categorylist"://获取首页列表下一页内容saveshare
+                    categorylist(context);
                     break;
                 case "saveshare"://保存分享内容
                     saveshare(context);
@@ -137,7 +137,7 @@ namespace Pandaali.CMS.Web.tools
         }
 
         #region 分批获取首页列表的处理方法===========================
-        private void default_list(HttpContext context)
+        private void categorylist(HttpContext context)
         {
             StringBuilder strTxt = new StringBuilder();
 
@@ -156,15 +156,18 @@ namespace Pandaali.CMS.Web.tools
                 //如果记录存在
                 if (dt.Rows.Count > 0)
                 {
+                    string pic = "/templates/main/images/user-avatar.png";
                     foreach (DataRow row in dt.Rows)
                     {
-                        //                string = @"<li>
-                        //                <a href="" class="wximg" target="_blank"><img src="http://open.weixin.qq.com/qr/code/?username=cctvyscj" border="0" /></a>
-                        //                < a href = "<%linkurl("news_show",{dr[id]})%>" target = "_blank" class="wxright"><p class="wxname">央视财经<span>1小时前</span></p><p class="wxtitle">{dr[title]}</p></a>
-                        //            </li>";
+                        Model.users user = new BLL.users().GetModel(row["user_name"].ToString());
+                        if (user.avatar != "")
+                        {
+                            pic = user.avatar;
+                        }
+                        
                         strTxt.Append("<li>");
-                        strTxt.Append("<a href=\"\" class=\"wximg\" target=\"_blank\"><img src=\"http://open.weixin.qq.com/qr/code/?username=cctvyscj\" border=\"0\" /></a>");
-                        strTxt.Append("<a href=\" \" target = \"_blank\" class=\"wxright\"><p class=\"wxname\">央视财经<span>1小时前</span></p><p class=\"wxtitle\">" + row["title"] + "</p></a>");
+                        strTxt.Append("<a href=\"\" class=\"wximg\" target=\"_blank\"><img class=\"avatar\" src=\"" + pic + "\" border=\"0\" /></a>");
+                        strTxt.Append("<a href=\"share/show-" + row["id"]+".html\" target = \"_blank\" class=\"wxright\"><p class=\"wxname\">" + row["user_name"]+"<span>"+ Utils.DateStringFromNow((DateTime)row["add_time"])+ "</span></p><p class=\"wxtitle\">" + row["title"] + "</p></a>");
                         strTxt.Append("</li>");
                     }
 
@@ -208,7 +211,7 @@ namespace Pandaali.CMS.Web.tools
             model.sort_id = sort_id;
             model.click = 0;
             model.status = 0;
-            model.is_msg = 0;
+            model.is_msg = 1;
             model.is_top = 0;
             model.is_red = 0;
             model.is_hot = 0;
@@ -619,14 +622,14 @@ namespace Pandaali.CMS.Web.tools
             //记住登录状态下次自动登录
             if (remember.ToLower() == "true")
             {
-                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name, 43200);
-                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password, 43200);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "Pandaali", model.user_name, 43200);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "Pandaali", model.password, 43200);
             }
             else
             {
                 //防止Session提前过期
-                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name);
-                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "Pandaali", model.user_name);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "Pandaali", model.password);
             }
 
             //写入登录日志
@@ -706,8 +709,8 @@ namespace Pandaali.CMS.Web.tools
             context.Session[DTKeys.SESSION_USER_INFO] = model;
             context.Session.Timeout = 45;
             //记住登录状态，防止Session提前过期
-            Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name);
-            Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password);
+            Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "Pandaali", model.user_name);
+            Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "Pandaali", model.password);
             //写入登录日志
             new BLL.user_login_log().Add(model.id, model.user_name, "会员登录");
             //返回URL
@@ -868,8 +871,8 @@ namespace Pandaali.CMS.Web.tools
             context.Session[DTKeys.SESSION_USER_INFO] = model;
             context.Session.Timeout = 45;
             //记住登录状态，防止Session提前过期
-            Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name);
-            Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password);
+            Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "Pandaali", model.user_name);
+            Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "Pandaali", model.password);
             //写入登录日志
             new BLL.user_login_log().Add(model.id, model.user_name, "会员登录");
             //返回URL
@@ -1108,8 +1111,8 @@ namespace Pandaali.CMS.Web.tools
                 context.Session[DTKeys.SESSION_USER_INFO] = model;
                 context.Session.Timeout = 45;
                 //防止Session提前过期
-                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "DTcms", model.user_name);
-                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "DTcms", model.password);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_NAME_REMEMBER, "Pandaali", model.user_name);
+                Utils.WriteCookie(DTKeys.COOKIE_USER_PWD_REMEMBER, "Pandaali", model.password);
                 //写入登录日志
                 new BLL.user_login_log().Add(model.id, model.user_name, "会员登录");
                 context.Response.Write("{\"status\":1, \"msg\":\"注册成功，欢迎成为本站会员！\", \"url\":\""

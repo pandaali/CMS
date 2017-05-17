@@ -23,8 +23,8 @@ namespace Pandaali.CMS.Web.admin
         protected void lbtnExit_Click(object sender, EventArgs e)
         {
             Session[DTKeys.SESSION_ADMIN_INFO] = null;
-            Utils.WriteCookie("AdminName", "DTcms", -14400);
-            Utils.WriteCookie("AdminPwd", "DTcms", -14400);
+            Utils.WriteCookie("AdminName", "Pandaali", -14400);
+            Utils.WriteCookie("AdminPwd", "Pandaali", -14400);
             Response.Redirect("login.aspx");
         }
 

@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2015/5/3 2:23:12.
-		本页面代码由DTcms模板引擎生成于 2015/5/3 2:23:12. 
+		This page was created by Pandaali Template Engine at 2017/5/16 23:10:59.
+		本页面代码由Pandaali模板引擎生成于 2017/5/16 23:10:59. 
 	*/
 
 	base.OnInit(e);
@@ -49,44 +49,38 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("script>\r\n</head>\r\n\r\n<body>\r\n<!--Header-->\r\n");
 
 	templateBuilder.Append("<div class=\"header\">\r\n  <div class=\"header-wrap\">\r\n    <div class=\"section\">\r\n      <div class=\"left-box\">\r\n        <a class=\"logo\" href=\"");
-	templateBuilder.Append(linkurl("index"));
+	templateBuilder.Append(linkurl("home"));
 
 	templateBuilder.Append("\">");
 	templateBuilder.Append(Utils.ObjectToStr(site.name));
 	templateBuilder.Append("</a>\r\n        <p class=\"nav\">\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("news"));
+	templateBuilder.Append(linkurl("home"));
 
-	templateBuilder.Append("\">资讯</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("goods"));
+	templateBuilder.Append("\">知识分享</a>\r\n          <a href=\"");
+	templateBuilder.Append(linkurl("resources"));
 
-	templateBuilder.Append("\">商城</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("video"));
-
-	templateBuilder.Append("\">视频</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("photo"));
-
-	templateBuilder.Append("\">图片</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("down"));
-
-	templateBuilder.Append("\">下载</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
+	templateBuilder.Append("\">资源共享</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
 	templateBuilder.Append(linkurl("search"));
 
 	templateBuilder.Append("', '#keywords');return false};\" placeholder=\"输入回车搜索\" x-webkit-speech=\"\" />\r\n        <input class=\"submit\" type=\"submit\" onclick=\"SiteSearch('");
 	templateBuilder.Append(linkurl("search"));
 
-	templateBuilder.Append("', '#keywords');\" value=\"搜索\" />\r\n      </div>\r\n      <div class=\"right-box\">\r\n        <ul>\r\n          <li class=\"login\">\r\n            <em></em>\r\n            <a href=\"");
-	templateBuilder.Append(linkurl("login"));
+	templateBuilder.Append("', '#keywords');\" value=\"搜索\" />\r\n      </div>\r\n      <div class=\"right-box\">\r\n      <script type=\"text/javascript\">\r\n			$.ajax({\r\n				type: \"POST\",\r\n				url: \"");
+	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
+	templateBuilder.Append("tools/submit_ajax.ashx?action=user_check_login\",\r\n				dataType: \"json\",\r\n				timeout: 20000,\r\n				success: function (data, textStatus) {\r\n				    if (data.status == 1) {\r\n					    $(\"#menu\").prepend('<li class=\"line\"><a href=\"");
+	templateBuilder.Append(linkurl("usercenter","exit"));
 
-	templateBuilder.Append("\">登录</a>\r\n          </li>\r\n          <li class=\"line\">\r\n            <a href=\"");
+	templateBuilder.Append("\">退出</a></li>');\r\n					    $(\"#menu\").prepend('<li class=\"login\"><em></em><a href=\"");
+	templateBuilder.Append(linkurl("usercenter","index"));
+
+	templateBuilder.Append("\">会员中心</a></li>');\r\n					} else {\r\n				        $(\"#menu\").prepend('<li class=\"line\"><a href=\"");
 	templateBuilder.Append(linkurl("register"));
 
-	templateBuilder.Append("\">注册</a>\r\n          </li>\r\n          <li>\r\n            <a href=\"");
-	templateBuilder.Append(linkurl("cart"));
+	templateBuilder.Append("\">注册</a></li>');\r\n				        $(\"#menu\").prepend('<li class=\"login\"><em></em><a href=\"");
+	templateBuilder.Append(linkurl("login"));
 
-	templateBuilder.Append("\">购物车<span id=\"shoppingCartCount\"><script type=\"text/javascript\" src=\"");
-	templateBuilder.Append(Utils.ObjectToStr(config.webpath));
-	templateBuilder.Append("tools/submit_ajax.ashx?action=view_cart_count\"></");
-	templateBuilder.Append("script></span>件</a>\r\n          </li>\r\n          <li><a href=\"");
+	templateBuilder.Append("\">登录</a></li>');\r\n					}\r\n				}\r\n			});\r\n		</");
+	templateBuilder.Append("script>\r\n        <ul id=\"menu\">\r\n          <li class=\"contact\"><a href=\"");
 	templateBuilder.Append(linkurl("content","contact"));
 
 	templateBuilder.Append("\">联系我们</a></li>\r\n        </ul>\r\n      </div>\r\n    </div>\r\n  </div>\r\n</div>");
@@ -118,7 +112,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(Utils.ObjectToStr(site.tel));
 	templateBuilder.Append("</p>\r\n        <p>E-mail：");
 	templateBuilder.Append(Utils.ObjectToStr(site.email));
-	templateBuilder.Append("</p>\r\n        <p>新浪微博：http://weibo.com/dtcms</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <!--/右边-->\r\n  \r\n  <!--左边-->\r\n  <div class=\"list-auto\">\r\n    <div class=\"ntitle\">\r\n      <h2>\r\n        <a>友情链接</a>\r\n      </h2>\r\n    </div>\r\n    \r\n    <div class=\"line15\"></div>\r\n    <!--链接列表-->\r\n    <div class=\"links\">\r\n      <ul class=\"img\">\r\n        ");
+	templateBuilder.Append("</p>\r\n      </div>\r\n    </div>\r\n  </div>\r\n  <!--/右边-->\r\n  \r\n  <!--左边-->\r\n  <div class=\"list-auto\">\r\n    <div class=\"ntitle\">\r\n      <h2>\r\n        <a>友情链接</a>\r\n      </h2>\r\n    </div>\r\n    \r\n    <div class=\"line15\"></div>\r\n    <!--链接列表-->\r\n    <div class=\"links\">\r\n      <ul class=\"img\">\r\n        ");
 	DataTable imgList = new Pandaali.CMS.Web.Plugin.Link.link().get_link_list(0, "is_image=1");
 
 	foreach(DataRow dr in imgList.Rows)
@@ -150,40 +144,31 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("index"));
 
 	templateBuilder.Append("\">首 页</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("content","about"));
+	templateBuilder.Append(linkurl("rekuutop"));
 
-	templateBuilder.Append("\">关于我们</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("news"));
+	templateBuilder.Append("\">热酷专栏</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append(linkurl("share"));
 
-	templateBuilder.Append("\">新闻资讯</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("goods"));
+	templateBuilder.Append("\">知识分享</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append(linkurl("resources"));
 
-	templateBuilder.Append("\">购物商城</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("video"));
-
-	templateBuilder.Append("\">视频专区</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("down"));
-
-	templateBuilder.Append("\">资源下载</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("photo"));
-
-	templateBuilder.Append("\">图片分享</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append("\">资源共享</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("feedback"));
 
 	templateBuilder.Append("\">留言反馈</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("link"));
 
 	templateBuilder.Append("\">友情链接</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("content","contact"));
+	templateBuilder.Append(linkurl("content","about"));
 
-	templateBuilder.Append("\">联系我们</a>\r\n  </div>\r\n  <div class=\"copyright\">\r\n    <p>版权所有 ");
+	templateBuilder.Append("\">关于我们</a>|\r\n  </div>\r\n  <div class=\"copyright\">\r\n    <p>版权所有 ");
 	templateBuilder.Append(site.company.ToString());
 
-	templateBuilder.Append(" 粤ICP备11064298号 DTcms版本号：");
+	templateBuilder.Append("  版本号：");
 	templateBuilder.Append(Utils.GetVersion().ToString());
 
-	templateBuilder.Append(" 旗舰版</p>\r\n    <p>Copyright &copy; 2009-2015 Pandaali.CMS.net Corporation,All Rights Reserved.</p>\r\n    <p><script src=\"http://s24.cnzz.com/stat.php?id=1996164&web_id=1996164&show=pic\" language=\"javascript\"></");
-	templateBuilder.Append("script></p>\r\n  </div>\r\n</div>");
+	templateBuilder.Append(" \r\n      <script type=\"text/javascript\">var cnzz_protocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cspan id='cnzz_stat_icon_1261954413'%3E%3C/span%3E%3Cscript src='\" + cnzz_protocol + \"s4.cnzz.com/stat.php%3Fid%3D1261954413%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E\"));</");
+	templateBuilder.Append("script></p>\r\n    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>\r\n  </div>\r\n</div>");
 
 
 	templateBuilder.Append("\r\n<!--/Footer-->\r\n</body>\r\n</html>\r\n");

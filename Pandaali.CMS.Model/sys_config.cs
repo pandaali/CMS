@@ -66,7 +66,7 @@ namespace Pandaali.CMS.Model
         private int _watermarkfontsize = 12;
 
         private string _sysdatabaseprefix = "dt_";
-        private string _sysencryptstring = "DTcms";
+        private string _sysencryptstring = "Pandaali";
 
         #region 主站基本信息==================================
         /// <summary>

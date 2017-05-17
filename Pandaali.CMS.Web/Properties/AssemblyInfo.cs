@@ -6,13 +6,13 @@ using Pandaali.CMS.Common;
 // 有关程序集的常规信息通过以下特性集 
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("DTcms Web DLL")]
-[assembly: AssemblyDescription("DTcms WEB类库")]
+[assembly: AssemblyTitle("Pandaali Web DLL")]
+[assembly: AssemblyDescription("Pandaali WEB类库")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("DTcms")]
-[assembly: AssemblyProduct("DTcms V" + DTKeys.ASSEMBLY_VERSION + " (.NET Framework 4.0)")]
+[assembly: AssemblyCompany("Pandaali")]
+[assembly: AssemblyProduct("Pandaali V" + DTKeys.ASSEMBLY_VERSION + " (.NET Framework 4.0)")]
 [assembly: AssemblyCopyright("Copyright 2009 - " + DTKeys.ASSEMBLY_YEAR + " dtsoft.net. All Rights Reserved.")]
-[assembly: AssemblyTrademark("DTcms")]
+[assembly: AssemblyTrademark("Pandaali")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 会使此程序集中的类型 

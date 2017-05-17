@@ -41,8 +41,8 @@ namespace Pandaali.CMS.Web.UI
             else
             {
                 //检查Cookies
-                string adminname = Utils.GetCookie("AdminName", "DTcms");
-                string adminpwd = Utils.GetCookie("AdminPwd", "DTcms");
+                string adminname = Utils.GetCookie("AdminName", "Pandaali");
+                string adminpwd = Utils.GetCookie("AdminPwd", "Pandaali");
                 if (adminname != "" && adminpwd != "")
                 {
                     BLL.manager bll = new BLL.manager();

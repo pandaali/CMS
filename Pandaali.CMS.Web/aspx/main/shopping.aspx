@@ -9,8 +9,8 @@ override protected void OnInit(EventArgs e)
 {
 
 	/* 
-		This page was created by DTcms Template Engine at 2017/5/16 11:08:53.
-		本页面代码由DTcms模板引擎生成于 2017/5/16 11:08:53. 
+		This page was created by Pandaali Template Engine at 2017/5/17 9:31:18.
+		本页面代码由Pandaali模板引擎生成于 2017/5/17 9:31:18. 
 	*/
 
 	base.OnInit(e);
@@ -48,15 +48,15 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("script>\r\n</head>\r\n\r\n<body>\r\n<!--Header-->\r\n");
 
 	templateBuilder.Append("<div class=\"header\">\r\n  <div class=\"header-wrap\">\r\n    <div class=\"section\">\r\n      <div class=\"left-box\">\r\n        <a class=\"logo\" href=\"");
-	templateBuilder.Append(linkurl("Default"));
+	templateBuilder.Append(linkurl("home"));
 
 	templateBuilder.Append("\">");
 	templateBuilder.Append(Utils.ObjectToStr(site.name));
 	templateBuilder.Append("</a>\r\n        <p class=\"nav\">\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("rekuushare"));
+	templateBuilder.Append(linkurl("home"));
 
 	templateBuilder.Append("\">知识分享</a>\r\n          <a href=\"");
-	templateBuilder.Append(linkurl("rekuuresurce"));
+	templateBuilder.Append(linkurl("resources"));
 
 	templateBuilder.Append("\">资源共享</a>\r\n        </p>\r\n      </div>\r\n      <div class=\"search\">\r\n        <input id=\"keywords\" name=\"keywords\" class=\"input\" type=\"text\" onkeydown=\"if(event.keyCode==13){SiteSearch('");
 	templateBuilder.Append(linkurl("search"));
@@ -226,15 +226,15 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append(linkurl("index"));
 
 	templateBuilder.Append("\">首 页</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("news"));
+	templateBuilder.Append(linkurl("rekuutop"));
 
-	templateBuilder.Append("\">互联网那些事</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("windows"));
+	templateBuilder.Append("\">热酷专栏</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append(linkurl("share"));
 
-	templateBuilder.Append("\">Win软件</a>|\r\n    <a target=\"_blank\" href=\"");
-	templateBuilder.Append(linkurl("mac"));
+	templateBuilder.Append("\">知识分享</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append(linkurl("resources"));
 
-	templateBuilder.Append("\">Mac软件</a>|\r\n    <a target=\"_blank\" href=\"");
+	templateBuilder.Append("\">资源共享</a>|\r\n    <a target=\"_blank\" href=\"");
 	templateBuilder.Append(linkurl("feedback"));
 
 	templateBuilder.Append("\">留言反馈</a>|\r\n    <a target=\"_blank\" href=\"");
@@ -249,7 +249,7 @@ override protected void OnInit(EventArgs e)
 	templateBuilder.Append("  版本号：");
 	templateBuilder.Append(Utils.GetVersion().ToString());
 
-	templateBuilder.Append("<script type=\"text/javascript\">var cnzz_protocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cspan id='cnzz_stat_icon_1261954413'%3E%3C/span%3E%3Cscript src='\" + cnzz_protocol + \"s4.cnzz.com/stat.php%3Fid%3D1261954413%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E\"));</");
+	templateBuilder.Append(" \r\n      <script type=\"text/javascript\">var cnzz_protocol = ((\"https:\" == document.location.protocol) ? \" https://\" : \" http://\");document.write(unescape(\"%3Cspan id='cnzz_stat_icon_1261954413'%3E%3C/span%3E%3Cscript src='\" + cnzz_protocol + \"s4.cnzz.com/stat.php%3Fid%3D1261954413%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E\"));</");
 	templateBuilder.Append("script></p>\r\n    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>\r\n  </div>\r\n</div>");
 
 

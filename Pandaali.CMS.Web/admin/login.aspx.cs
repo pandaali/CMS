@@ -6,11 +6,14 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Security.Cryptography;
 using Pandaali.CMS.Common;
+using Pandaali.CMS.Web.UI;
 
 namespace Pandaali.CMS.Web.admin
 {
     public partial class login : System.Web.UI.Page
     {
+        protected internal string version = Utils.GetVersion();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -60,8 +63,8 @@ namespace Pandaali.CMS.Web.admin
             }
             //写入Cookies
             Utils.WriteCookie("DTRememberName", model.user_name, 14400);
-            Utils.WriteCookie("AdminName", "DTcms", model.user_name);
-            Utils.WriteCookie("AdminPwd", "DTcms", model.password);
+            Utils.WriteCookie("AdminName", "Pandaali", model.user_name);
+            Utils.WriteCookie("AdminPwd", "Pandaali", model.password);
             Response.Redirect("index.aspx");
             return;
         }

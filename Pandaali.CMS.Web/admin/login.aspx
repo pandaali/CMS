@@ -41,7 +41,9 @@
 </div>
 
 <div class="copy-right">
-  <p>版权所有 深圳市动力启航软件有限公司 Copyright © 2009 - 2015 dtsoft.net Inc. All Rights Reserved.</p>
+  <p>版权所有 热酷工作室  版本号：<%=version%> 
+      <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1261954413'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/stat.php%3Fid%3D1261954413%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));</script></p>
+    <p>Copyright &copy; 2017 rekuu.com Corporation,All Rights Reserved.</p>
 </div>
 </form>
 </body>
